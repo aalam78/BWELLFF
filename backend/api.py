@@ -12,6 +12,7 @@ def get_person(name):
     print(name)
     return db.search(Query().name == name)
 
-def add_person(person):
-    db.insert(person)
-    return person, 201 # 201 is the status code for successful creation
+def create_person(body):
+    print(body)
+    db.insert(body)
+    return body, 201 # 201 is the status code for successful creation

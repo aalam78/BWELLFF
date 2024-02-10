@@ -1,0 +1,29 @@
+#provide input parameter validation, 
+# output response data validation, 
+# and URL endpoint definition.
+
+# swagger.yml
+# blueprint for the API 
+# define the data your web server can expect 
+# how server should respond to requests
+
+openapi: 3.0.0
+info:
+  title: Sample API
+  description: "A test api with people and notes"
+  version: 1.0.0
+
+servers:
+  - url: "/api" # base path for all endpoints
+
+paths:
+  /people: # relative path of API endpoint
+    get: # the HTTP method for the endpoint
+      operationId: "people.read_all"
+      tags:
+        - "people"
+      summary: "read the list of people"
+      responses: # Corrected typo here
+        '200':
+          description: A JSON array of people
+

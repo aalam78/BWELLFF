@@ -18,7 +18,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    <h1>Pre-Health Screening </h1>
    <img src="./images/BFF.png" alt="BFF" style="width:500px;height:500px;">
 
-    
+    <!-- Name -->
    <form>
     <div class="row">
       <div class="col">
@@ -30,7 +30,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         <label for="name"><input type="text" name="name" id="name" placeholder="Your name" required /></label>
       </div>
     </div>
-  
+    <!-- Age -->
     <div class="row">
       <div class="col">
         <p>2. Age:</p>
@@ -41,23 +41,38 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         <label for="age"><input type="number" name="age" id="age" placeholder="Your age" required /></label>
       </div>
     </div>
-  
+
+    <!-- Diagnosis -->
     <div class="row">
-      <div class="col">
-        <p>3. Is this diagnosis for you?</p>
-      </div>
+        <div class="col">
+          <p>3. Is this diagnosis for you?</p>
+        </div>
     </div>
     <div class="row">
-      <div class="col">
-        <label for="diagnosis_for_self">
-          <input type="radio" name="diagnosis_for_self" id="diagnosis_for_self" value="yes" required /> Yes
-        </label>
-        <label for="diagnosis_for_other">
-          <input type="radio" name="diagnosis_for_self" id="diagnosis_for_other" value="no" /> No
-        </label>
+        <div class="col">
+          <label for="diagnosis_for_self">
+            <input type="radio" name="diagnosis_for_self" id="diagnosis_for_self" value="yes" required /> Yes
+          </label>
+          <label for="diagnosis_for_other">
+            <input type="radio" name="diagnosis_for_self" id="diagnosis_for_other" value="no" onclick="toggleDiagnosisFor()" /> No
+          </label>
+        </div>
       </div>
-    </div>
-  
+
+      <div class="row" id="diagnosis_for_list" style="display: none;">
+        <div class="col">
+          <p>Who are you diagnosing for?</p>
+          <select name="diagnosis_for" required>
+            <option value="For kid">For kid</option>
+            <option value="For spouse">For spouse</option>
+            <option value="For parent">For parent</option>
+            <option value="For relative">For relative</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+
+    <!-- Recent Health Changes -->
     <div class="row">
       <div class="col">
         <p>4. Have you experienced any recent changes in your health?</p>
@@ -73,8 +88,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         </label>
       </div>
     </div>
-  
-    <title>Pre-Health Screening</title>
+
+    <!--Pre-Existing medical conditions-->
 <script>
 function toggleMedicalConditions() {
   var yesRadio = document.getElementById('pre_existing_conditions_yes');
@@ -141,6 +156,7 @@ function toggleMedicalConditions() {
       </div>
     </div>
   
+    <!--Taking medications-->
     <div class="row">
       <div class="col">
         <p>6. Are you currently taking any medications?</p>
@@ -157,6 +173,7 @@ function toggleMedicalConditions() {
       </div>
     </div>
   
+    <!--Known allergies-->
     <div class="row">
       <div class="col">
         <p>7. Do you have any known allergies?</p>

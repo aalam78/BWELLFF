@@ -5,7 +5,7 @@ from json import JSONEncoder
 
 import connexion
 
-#TODO: maybe add emergency contact
+
 
 # Create the application instance
 app =connexion.App(__name__, specification_dir='./') 

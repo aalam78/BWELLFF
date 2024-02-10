@@ -1,0 +1,75 @@
+/* flex grid */
+.row {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .col {
+    flex: 1;
+    /*border: .063em solid gainsboro;*/
+    padding: .5em;
+    overflow: hidden;
+  }
+  
+  body {
+    padding: 1em;
+    background-color: 0766AD;
+  }
+   /* form styles */
+  form {
+    border: .063em solid lightgray;
+    max-width: 25em;
+    margin: 10% auto;
+  }
+  
+  p {
+    font-weight: bold;
+  }
+  
+  input[type="text"] {
+    box-sizing: border-box;
+    width: 40%;
+  }
+  
+  .row:nth-child(3), .row:nth-child(4), .row:nth-child(5), .row:nth-child(6) {
+    /*border: .063em solid gainsboro;*/
+    margin: 0 1em;
+  }
+  
+  .row:nth-child(3), .row:nth-child(5) {
+    background-color: whitesmoke;
+  }
+  
+  .row:first-child {
+    background-color: cadetblue;
+    color: white;
+  }
+  
+  .row:last-child {
+    text-align: right;
+    padding: .4em;
+  }
+  
+  input[type="submit"] {
+    width: 100%;
+    background-color: coral;
+    border: none;
+    color: white;
+    padding: .3em;
+    border-radius: .15em;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: tomato;
+  }
+  
+  /* flex grid */
+  @media screen and (min-width: 400px) {
+      .row {
+      flex-direction: row;
+    }
+    
+    input[type="submit"] {
+      width: 6em;
+    }
+  }

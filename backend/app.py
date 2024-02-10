@@ -22,5 +22,5 @@ if __name__ == '__main__':
     # localhost:8000/api/ui
 
     # Run the application
-    # http://localhost:8000/api/people, will run the read_all function in people.py
+    # http://localhost:8000/api/people, will run the read_all function
     app.run(host=host, port=port, log_level="debug") # run the application

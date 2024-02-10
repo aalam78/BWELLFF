@@ -26,7 +26,9 @@ Accessibilty
 [ ] - read out questions and take answers
 
 
-frontend example POST
+**have to ask Arnib**
+- when do we display a button 
+frontend JS example POST
 ```
 const addPerson = async (person) => {
   const response = await fetch('/api/people', {

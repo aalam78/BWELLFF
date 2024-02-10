@@ -6,8 +6,8 @@
 # The full request URL is constructed as <server-url>/path.
 openapi: 3.0.0
 info:
-  title: Sample API
-  description: "A test api with people and notes"
+  title: Medical Record API
+  description: "API with test medical records for setting up appointments and managing patient data."
   version: 1.0.0
 
 servers:
@@ -15,74 +15,153 @@ servers:
 
 components:
   schemas:
-    Person:
+    Address:
+      type: object
+      properties:
+        street:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+      required:
+        - street
+        - city
+        - state
+        - zip
+    contact:
+      type: object
+      properties:
+        phone:
+          type: string
+        email:
+          type: string
+      required:
+        - phone
+        - email
+    emergency_contact:
       type: object
       properties:
         name:
           type: string
-        age:
-          type: integer
-      # TODO: change to id and name
-      # both name and age are required for a person
+        relationship:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
       required:
         - name
+        - relationship
+        - phone
+        - email
+    Patient:
+      type: object
+      properties:
+        ID:
+          type: integer
+        name:
+          type: string
+        age:
+          type: integer
+        #pre-quesitonnare
+        recent_changes_in_health_yn:
+          type: boolean
+        pre-existing_conditions_yn:
+          #array of strings that are conditions
+          type: array
+          items:
+            type: string
+        medications:
+          type: boolean
+        any_allergies_yn:
+          type: boolean  
+        #ask for these fields in telehealth or appointment form
+        address:
+          $ref: '#/components/schemas/Address'
+        contact:
+          $ref: '#/components/schemas/contact'
+        emergency_contact:
+          $ref: '#/components/schemas/emergency_contact'
+      required:
+        - ID
+        - name
         - age
+        - recent_changes_in_health_yn
+        - pre-existing_conditions_yn
+        - medications
+        - any_allergies_yn
 paths:
-  /people: #relative path
+  /patient: #relative path
     get: #
-      summary: Returns a list of people
-      operationId: api.get_people
+      summary: Returns a list of all paitents
+      operationId: api.get_patients
       responses:
         '200':    # HTTP status code
-          description: A JSON array of people
+          description: A JSON array of patients
           content:
             application/json:    # Media type
               schema: 
                 type: array
                 items: 
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    age:
-                      type: integer
+                  $ref: '#/components/schemas/Patient'
     post:
-      summary: Creates a new person
-      operationId: api.create_person
+      summary: Creates a new patient
+      operationId: api.create_patient_initial
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Person'
+              $ref: '#/components/schemas/Patient'
       responses:
         '201':
-          description: Person created
+          description: Patient created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Person'
+                $ref: '#/components/schemas/Patient'
         '400':
           description: Invalid input
-  #TODO: change to ID
-  /people/{name}: 
+  #patient by ID
+  /patient/{ID}: 
     get:
-      summary: Returns a person by name
-      operationId: api.get_person
+      summary: Returns a patient by ID
+      operationId: api.get_patient_by_ID
       parameters:
-        - name: name
+        - name: ID
           in: path
           required: true
           schema:
-            type: string
+            type: integer
       responses:
         '200':
-          description: A person
+          description: A patient
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Person'
+                $ref: '#/components/schemas/Patient'
         '404':
-          description: Person not found
-
+          description: Patient not found
+    put:
+      summary: Updates a patient
+      operationId: api.update_patient
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Patient'
+      responses:
+        '200':
+          description: Patient updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Patient'
+        '404':
+          description: Patient not found
+#TODO: add delete method
 

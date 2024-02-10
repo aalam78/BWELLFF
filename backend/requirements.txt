@@ -1,12 +1,4 @@
-#pip install -r requirements.txt
-
-# api/backend
-pip install "connexion[flask]"
-pip install "connexion[uvicorn]"
-pip install flask
-
-# database
-pip install tinydb
-
-# gpt
-pip install openai
+connexion==3.0.5
+Flask==3.0.2
+Flask_RESTful==0.3.10
+tinydb==4.8.0

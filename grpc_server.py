@@ -5,7 +5,7 @@ import chat_gpt_pb2_grpc
 import openai
 
 # Set up OpenAI API key
-openai.api_key = "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"
+openai.api_key = "***"
 # List available engines
 engines = openai.Engine.list()
 

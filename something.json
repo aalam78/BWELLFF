@@ -1,0 +1,35 @@
+{
+    "patientInfo": {
+      "patientId": "unique_patient_identifier",
+      "name": {
+        "firstName": "John",
+        "lastName": "Doe"
+      },
+      "address": {
+        "street": "123 Health St",
+        "city": "Wellville",
+        "state": "HV",
+        "zipCode": "12345"
+      },
+      "contact": {
+        "phone": "123-456-7890",
+        "email": "john.doe@example.com"
+      },
+      "emergencyContact": {
+        "name": {
+          "firstName": "Jane",
+          "lastName": "Doe"
+        },
+        "relationship": "Spouse",
+        "phone": "098-765-4321",
+        "email": "jane.doe@example.com"
+      }
+    },
+    "questionnaire": {
+      "questionId": "unique_question_identifier",
+      "questionText": "How would you rate your overall pain on a scale of 1 to 10?",
+      "answer": "7",
+      "timestamp": "2024-02-09T12:34:56Z"
+    }
+  }
+  

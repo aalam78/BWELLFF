@@ -12,6 +12,15 @@ for this backend we need to do 3 basic things
 [ ]
 
 
+Front end 
+1st 5 questions
+
+pre questionnaire
+- Is this for you or for someone else?
+- idk 
+- after the last one, do the BWellFF GPT WRAPPER
+
+
 Accessibilty
 [ ] - welcome message in speech
 [ ] - read out questions and take answers

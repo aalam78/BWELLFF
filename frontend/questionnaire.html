@@ -74,41 +74,54 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
       </div>
     </div>
   
-    <div class="row">
-      <div class="col">
-        <p>5. Do you have any pre-existing medical conditions?</p>
-      </div>
-    </div>
+    <title>Pre-Health Screening</title>
+<script>
+function toggleMedicalConditions() {
+  var yesRadio = document.getElementById('pre_existing_conditions_yes');
+  var medicalConditions = document.getElementById('medical_conditions');
+  
+  medicalConditions.style.display = yesRadio.checked ? 'block' : 'none';
+}
+</script>
+</head>
+<body>
 
-    <div class="row">
-        <div class="col">
-          <label for="pre_existing_conditions_yes">
-            <input type="radio" name="pre_existing_conditions" id="pre_existing_conditions_yes" value="yes" required onclick="toggleMedicalConditions()" /> Yes
-          </label>
-          <label for="pre_existing_conditions_no">
-            <input type="radio" name="pre_existing_conditions" id="pre_existing_conditions_no" value="no" onclick="toggleMedicalConditions()" /> No
-          </label>
-        </div>
-      </div>
-    
-      <div class="row" id="medical_conditions" style="display: none;">
-        <div class="col">
-          <p>Select from the common pre-existing medical conditions:</p>
-          <select name="medical_conditions[]" multiple required>
-            <option value="Hypertension">Hypertension</option>
-            <option value="Diabetes">Diabetes</option>
-            <option value="Asthma">Asthma</option>
-            <option value="Chronic obstructive pulmonary disease (COPD)">Chronic obstructive pulmonary disease (COPD)</option>
-            <option value="Coronary artery disease">Coronary artery disease</option>
-            <option value="Heart failure">Heart failure</option>
-            <option value="Stroke">Stroke</option>
-            <option value="Chronic kidney disease">Chronic kidney disease</option>
-            <option value="Cancer">Cancer</option>
-            <option value="Rheumatoid arthritis">Rheumatoid arthritis</option>
-            <!-- Add more options as needed -->
-          </select>
-        </div>
-      </div>
+<form>
+  <div class="row">
+    <div class="col">
+      <p>5. Do you have any pre-existing medical conditions?</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <label for="pre_existing_conditions_yes">
+        <input type="radio" name="pre_existing_conditions" id="pre_existing_conditions_yes" value="yes" required onclick="toggleMedicalConditions()" /> Yes
+      </label>
+      <label for="pre_existing_conditions_no">
+        <input type="radio" name="pre_existing_conditions" id="pre_existing_conditions_no" value="no" onclick="toggleMedicalConditions()" /> No
+      </label>
+    </div>
+  </div>
+
+  <div class="row" id="medical_conditions" style="display: none;">
+    <div class="col">
+      <p>Select from the common pre-existing medical conditions:</p>
+      <select name="medical_conditions[]" multiple required>
+        <option value="Hypertension">Hypertension</option>
+        <option value="Diabetes">Diabetes</option>
+        <option value="Asthma">Asthma</option>
+        <option value="Chronic obstructive pulmonary disease (COPD)">Chronic obstructive pulmonary disease (COPD)</option>
+        <option value="Coronary artery disease">Coronary artery disease</option>
+        <option value="Heart failure">Heart failure</option>
+        <option value="Stroke">Stroke</option>
+        <option value="Chronic kidney disease">Chronic kidney disease</option>
+        <option value="Cancer">Cancer</option>
+        <option value="Rheumatoid arthritis">Rheumatoid arthritis</option>
+        <!-- Add more options as needed -->
+      </select>
+    </div>
+  </div>
   
     <div class="row">
       <div class="col">

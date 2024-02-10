@@ -5,8 +5,6 @@ from json import JSONEncoder
 
 import connexion
 
-
-
 # Create the application instance
 app =connexion.App(__name__, specification_dir='./') 
 app.add_api('swagger.yml') # Read the swagger.yml file to configure the endpoints

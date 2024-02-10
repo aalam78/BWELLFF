@@ -106,22 +106,40 @@ function toggleMedicalConditions() {
 
   <div class="row" id="medical_conditions" style="display: none;">
     <div class="col">
-      <p>Select from the common pre-existing medical conditions:</p>
-      <select name="medical_conditions[]" multiple required>
-        <option value="Hypertension">Hypertension</option>
-        <option value="Diabetes">Diabetes</option>
-        <option value="Asthma">Asthma</option>
-        <option value="Chronic obstructive pulmonary disease (COPD)">Chronic obstructive pulmonary disease (COPD)</option>
-        <option value="Coronary artery disease">Coronary artery disease</option>
-        <option value="Heart failure">Heart failure</option>
-        <option value="Stroke">Stroke</option>
-        <option value="Chronic kidney disease">Chronic kidney disease</option>
-        <option value="Cancer">Cancer</option>
-        <option value="Rheumatoid arthritis">Rheumatoid arthritis</option>
-        <!-- Add more options as needed -->
-      </select>
+        <p>Select from the common pre-existing medical conditions:</p>
+        <label for="hypertension">
+          <input type="checkbox" name="medical_conditions[]" id="hypertension" value="Hypertension" /> Hypertension
+        </label><br>
+        <label for="diabetes">
+          <input type="checkbox" name="medical_conditions[]" id="diabetes" value="Diabetes" /> Diabetes
+        </label><br>
+        <label for="asthma">
+          <input type="checkbox" name="medical_conditions[]" id="asthma" value="Asthma" /> Asthma
+        </label><br>
+        <label for="copd">
+          <input type="checkbox" name="medical_conditions[]" id="copd" value="Chronic obstructive pulmonary disease (COPD)" /> Chronic obstructive pulmonary disease (COPD)
+        </label><br>
+        <label for="cad">
+          <input type="checkbox" name="medical_conditions[]" id="cad" value="Coronary artery disease" /> Coronary artery disease
+        </label><br>
+        <label for="heart_failure">
+          <input type="checkbox" name="medical_conditions[]" id="heart_failure" value="Heart failure" /> Heart failure
+        </label><br>
+        <label for="stroke">
+          <input type="checkbox" name="medical_conditions[]" id="stroke" value="Stroke" /> Stroke
+        </label><br>
+        <label for="ckd">
+          <input type="checkbox" name="medical_conditions[]" id="ckd" value="Chronic kidney disease" /> Chronic kidney disease
+        </label><br>
+        <label for="cancer">
+          <input type="checkbox" name="medical_conditions[]" id="cancer" value="Cancer" /> Cancer
+        </label><br>
+        <label for="ra">
+          <input type="checkbox" name="medical_conditions[]" id="ra" value="Rheumatoid arthritis" /> Rheumatoid arthritis
+        </label><br>
+        <!-- Add more checkboxes for each medical condition -->
+      </div>
     </div>
-  </div>
   
     <div class="row">
       <div class="col">

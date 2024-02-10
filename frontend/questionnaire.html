@@ -43,6 +43,17 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     </div>
 
     <!-- Diagnosis -->
+    <script>
+    function toggleDiagnosisFor() {
+        var noRadio = document.getElementById('diagnosis_for_other');
+        var diagnosisForList = document.getElementById('diagnosis_for_list');
+          
+        diagnosisForList.style.display = noRadio.checked ? 'block' : 'none';
+    }
+    </script>
+    </head>
+    <body>
+
     <div class="row">
         <div class="col">
           <p>3. Is this diagnosis for you?</p>
@@ -63,7 +74,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         <div class="col">
           <p>Who are you diagnosing for?</p>
           <select name="diagnosis_for" required>
-            <option value="For kid">For kid</option>
+            <option value="For child">For kid</option>
             <option value="For spouse">For spouse</option>
             <option value="For parent">For parent</option>
             <option value="For relative">For relative</option>
@@ -121,7 +132,7 @@ function toggleMedicalConditions() {
 
   <div class="row" id="medical_conditions" style="display: none;">
     <div class="col">
-        <p>Select from the common pre-existing medical conditions:</p>
+        <p>Select your current pre-existing medical conditions:</p>
         <label for="hypertension">
           <input type="checkbox" name="medical_conditions[]" id="hypertension" value="Hypertension" /> Hypertension
         </label><br>

@@ -2,33 +2,31 @@ import grpc
 from concurrent import futures
 import chat_gpt_pb2
 import chat_gpt_pb2_grpc
-import openai
+import os
 
-# Set up OpenAI API key
-openai.api_key = "***"
-# List available engines
-engines = openai.Engine.list()
+from openai import OpenAI
 
-# Print the list of engines
-print("Available Engines:")
-for engine in engines.data:
-    print(engine.id)
+client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+# Set up your OpenAI API key
 
-def chat_with_gpt(prompt):
-    response = openai.Completion.create(
-        engine="gpt-3.5-turbo-instruct",
+class ChatGPTServicer(chat_gpt_pb2_grpc.ChatGPTServicer):
+    def ChatWithGPT(self, request, context):
+        prompt = request.prompt
+        response = self.chat_with_gpt(prompt)
+        return chat_gpt_pb2.ChatResponse(response=response)
+
+    def chat_with_gpt(self, prompt):
+        response = client.completions.create(model="gpt-3.5-turbo-instruct",
         prompt=prompt,
-        max_tokens=50,
-    )
-    return response.choices[0].text.strip()
+        max_tokens=50)
+        return response.choices[0].text.strip()
+
+def serve():
+    server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
+    chat_gpt_pb2_grpc.add_ChatGPTServicer_to_server(ChatGPTServicer(), server)
+    server.add_insecure_port("[::]:50052")
+    server.start()
+    server.wait_for_termination()
 
 if __name__ == "__main__":
-    print("Welcome to ChatGPT Bot! Type 'exit' to end the conversation.")
-    while True:
-        user_input = input("You: ")
-        if user_input.lower() == 'exit':
-            print("ChatGPT Bot: Goodbye!")
-            break
-        prompt = f"You: {user_input}\nChatGPT Bot:"
-        response = chat_with_gpt(prompt)
-        print("ChatGPT Bot:", response)    
+    serve()

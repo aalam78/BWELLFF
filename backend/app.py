@@ -5,11 +5,12 @@ from json import JSONEncoder
 
 import connexion
 
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 
 # Create the application instance
-app =connexion.App(__name__, specification_dir='./')
-CORS(app.app)
+app =connexion.App(__name__, specification_dir='./') 
+
+CORS(app.app) # enable CORS
 app.add_api('swagger.yml') # Read the swagger.yml file to configure the endpoints
 
 @app.route('/') # decorator to tell Flask what URL should trigger the function
@@ -25,5 +26,5 @@ if __name__ == '__main__':
     # localhost:8000/api/ui
 
     # Run the application
-    # http://localhost:8000/api/people, will run the read_all function in people.py
+    # http://localhost:8000/api/people, will run the read_all function
     app.run(host=host, port=port, log_level="debug") # run the application

@@ -5,12 +5,20 @@ from json import JSONEncoder
 
 import connexion
 
+<<<<<<< Updated upstream
 from flask_cors import CORS, cross_origin
 
 # Create the application instance
 app =connexion.App(__name__, specification_dir='./') 
 
 CORS(app.app) # enable CORS
+=======
+from flask_cors import CORS
+
+# Create the application instance
+app =connexion.App(__name__, specification_dir='./') 
+CORS(app.app)
+>>>>>>> Stashed changes
 app.add_api('swagger.yml') # Read the swagger.yml file to configure the endpoints
 
 @app.route('/') # decorator to tell Flask what URL should trigger the function

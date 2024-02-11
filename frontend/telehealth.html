@@ -2,10 +2,103 @@
 <html>
 <head>
   <meta name = "viewport" content="width = device-width, initial-scale = 1.0">
+  <link rel = "stylesheet" type = "text/css" href="telehealth.css">
 <title>TeleHealth</title>
 </head>
 <body>
-  <h1> Login Forms will go here</h1>
-  <img src="BFF.png" alt="BFF" style="width:500px;height:500px;">
+   <div id="welcomeMessage"></div>
+   <button class="custom-btn btn-6" onclick="fetchPerson()"><span>Book an appointment</span></button>
+   <img src="./images/doc5.png" alt="BFF" style="width:auto;height:500px;">
+   
+
+    
+   <input type="date" id="datePicker">
+
+   <!-- Add an input field for entering the person's name -->
+   <input type="text" id="personName2" placeholder="This is a test. Enter person's name">
+   <!-- Add a button to trigger the fetch operation -->
+   <button onclick="postData()">Post Person</button>
+  
+  <script>
+      function fetchPerson() {
+        const name = "Jane Doe";
+        // const name = document.getElementById('personName').value.trim();
+        const url = `http://localhost:8000/api/people/${encodeURIComponent(name)}`;
+        if (name === '') {
+            alert('Please enter a name.');
+            return;
+        }
+
+        fetch(url)
+            .then(response => {
+              console.log(response);  
+                if (!response.ok) {
+                    throw new Error('Person not found');
+                }
+                return response.json();
+            })
+            .then(person => {
+                // Display the personalized welcome message and the fetched person's information
+                const welcomeMessage = document.createElement('div');
+                welcomeMessage.textContent = `Welcome, ${(name)} to Telehealth!`;
+                document.getElementById('welcomeMessage').appendChild(welcomeMessage);
+
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('welcomeMessage').innerHTML = 'Person not found';
+            });
+    }
+    
+
+    const datePicker = document.getElementById('datePicker');
+
+// Example: Log the selected date to the console when changed
+datePicker.addEventListener('change', function() {
+    console.log('Selected date:', datePicker.value);
+    fetch('/post_date', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ date: selectedDate })
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+});
+
+
+function postData() {
+    const url = `http://localhost:8000/api/people/`;
+    const data = {
+        name: 'name',
+        age: 2
+    };
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Data sent successfully:', data);
+        // Handle response data here
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+</script> 
+ 
 </body>
 </html>

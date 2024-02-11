@@ -45,6 +45,27 @@ paths:
                       type: string
                     age:
                       type: integer
+      post:
+        summary: Adds a new person
+        operationId: api.add_person
+        requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - age
+              properties:
+                name:
+                  type: string
+                age:
+                  type: integer
+         responses:
+          '201':
+          description: Person created
+    
   #TODO: change to ID
   /people/{name}: 
     get:
@@ -72,24 +93,24 @@ paths:
                 #     type: integer
         '404':
           description: Person not found
-    # post:
-    #   summary: Adds a new person
-    #   operationId: api.add_person
-    #   requestBody:
-    #     required: true
-    #     content:
-    #       application/json:
-    #         schema:
-    #           type: object
-    #           required:
-    #             - name
-    #             - age
-    #           properties:
-    #             name:
-    #               type: string
-    #             age:
-    #               type: integer
-    #   responses:
-    #     '201':
-    #       description: Person created
+    post:
+      summary: Adds a new person
+      operationId: api.add_person
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - age
+              properties:
+                name:
+                  type: string
+                age:
+                  type: integer
+      responses:
+        '201':
+          description: Person created
 

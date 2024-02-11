@@ -54,3 +54,6 @@ frontend example GET
 
 
 //running the api creates the updates to the databse
+
+#TODO: using previous information have GPT generate questions to diagnose the patient accurately 
+#TODO: fabricate example patient medical records, and show the responses from them

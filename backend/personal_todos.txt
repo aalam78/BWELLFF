@@ -1,59 +1,21 @@
-for this backend we need to do 3 basic things
-
-1. send and receive data from db 
-[x] send data to frontend (from db or from gpt)
-[ ] receive data from front-end to put into DB or GPT 
-[ ] send/receive data from GPT api call
-
-2. send and receive data to GPT 
-[ ] how to structure the data to send and recieve 
-
-3. maybe do some processing
-[ ]
-
-
-Front end 
-1st 5 questions
+Front end:
+ All the questions needed for GPT 
 
 pre questionnaire
-- Is this for you or for someone else?
-- idk 
-- after the last one, do the BWellFF GPT WRAPPER
+- if yes to medications:
+    - What medications are you taking?
+- 
 
 
 Accessibilty
 [ ] - welcome message in speech
-[ ] - read out questions and take answers
 
 
-**have to ask Arnib**
-- when do we display a button 
-frontend JS example POST
-```
-const addPerson = async (person) => {
-  const response = await fetch('/api/people', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(person),
-  });
-  if (!response.ok) {
-    throw new Error('Failed to add person');
-  }
-  return await response.json();
-};
-
-// Example usage
-addPerson({ name: 'Jane Doe', age: 32 })
-  .then(person => console.log('Added person:', person))
-  .catch(error => console.error('Error adding person:', error));
-```
-
-frontend example GET 
-
-
-//running the api creates the updates to the databse
 
 #TODO: using previous information have GPT generate questions to diagnose the patient accurately 
 #TODO: fabricate example patient medical records, and show the responses from them
+#TODO: use temperature to train and fine-tune model  
+
+#TODO: followup:!!!!
+- use static questionnaire and generate more questions for a dynamic follow-up questionnaire 
+- and use both to get diagnosis by id 

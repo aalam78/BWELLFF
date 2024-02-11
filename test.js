@@ -1,33 +1,32 @@
-async function testPatientSend() {
-    async function createPatient(patientData) {
-        const url = 'http://localhost:8000/api/patient'; // Adjust the URL based on where your API is hosted
+// async function createPatient(patientData) {
+//         const url = 'http://localhost:8000'; // Adjust the URL based on where your API is hosted
 
-        try {
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(patientData)
-            });
+//         try {
+//             const response = await fetch(url, {
+//                 method: 'POST',
+//                 headers: {
+//                     'Content-Type': 'application/json',
+//                 },
+//                 body: JSON.stringify(patientData)
+//             });
 
-            if (response.ok) {
-                const jsonResponse = await response.json();
-                console.log('Patient created:', jsonResponse);
-                return jsonResponse;
-            } else {
-                console.error('Failed to create patient. Status:', response.status);
-            }
-        } catch (error) {
-            console.error('Error creating patient:', error);
-        }
-    }
+//             if (response.ok) {
+//                 const jsonResponse = await response.json();
+//                 console.log('Patient created:', jsonResponse);
+//                 return jsonResponse;
+//             } else {
+//                 console.error('Failed to create patient. Status:', response.status);
+//             }
+//         } catch (error) {
+//             console.error('Error creating patient:', error);
+//         }
+//     }
 
     // Example patient data
     const testPatient = {
-        "ID": 101,
-        "name": "Jane Doe",
-        "age": 28,
+        "ID": 30,
+        "name": "Armin E. Arlert",
+        "age": 25,
         "recent_changes_in_health_yn": true,
         "pre-existing_conditions": [
             "Asthma"
@@ -100,7 +99,95 @@ async function testPatientSend() {
         ]
     }
 
-// Call the function with the patient data
-createPatient(testPatient);
+// // Call the function with the patient data
+// createPatient(testPatient);
 
+// go to home page
+async function fetchRoot() {
+    const url = 'http://localhost:8000'; // URL pointing to the root route
+
+    try {
+        const response = await fetch(url, {
+            method: 'GET', // Use GET to retrieve data
+        });
+
+        if (response.ok) {
+            const contentType = response.headers.get('content-type');
+            if (contentType && contentType.includes('application/json')) {
+                const jsonResponse = await response.json();
+                console.log('Received JSON:', jsonResponse);
+            } else {
+                const textResponse = await response.text();
+                console.log('Received HTML/text:', textResponse);
+            }
+        } else {
+            console.error('Failed to fetch from root. Status:', response.status);
+        }
+    } catch (error) {
+        console.error('Error fetching from root:', error);
+    }
 }
+
+// get a patient
+
+async function fetchPatient(id) {
+    const url = `http://localhost:8000/api/patient/${id}`; // URL pointing to the patient route
+
+    try {
+        const response = await fetch(url, {
+            method: 'GET', // Use GET to retrieve data
+        });
+
+        if (response.ok) {
+            const jsonResponse = await response.json();
+            console.log('Patient:', jsonResponse);
+        } else {
+            console.error('Failed to fetch patient. Status:', response.status);
+        }
+    } catch (error) {
+        console.error('Error fetching patient:', error);
+    }
+}
+
+// Call the function to initiate the fetch request
+//fetchPatient(101);
+
+
+// create patient
+async function createChat(patientData) {
+    const url = 'http://localhost:8000/api/chat'; // URL pointing to the patient route
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(patientData)
+        });
+
+        if (response.ok) {
+            const jsonResponse = await response.json();
+            console.log('Patient created:', jsonResponse);
+        } else {
+            console.error('Failed to create patient. Status:', response.status);
+        }
+    } catch (error) {
+        console.error('Error creating patient:', error);
+    }
+}
+
+testchat = {
+    "ID": 101,
+    "prompt": "I am feeling better today"
+}
+
+createChat(testchat);
+
+// FOR SURE problem with CORS
+//node test.js does not need to use CORS because it is not a request from the browser
+
+// the server.js file does need to use CORS to allow the request to go through
+// the fetch request from the browser does need to use CORS to allow the request to go through
+
+// request from browser does need to use CORS to allow the request to go through 

@@ -7,42 +7,8 @@
   <title>Home</title>
 </head>
 <body>
-  <nav>
-    <div class="logo">
-      <img id="logo" src="./images/BFF.png" style="width:auto;height:50px;">
-    </div>
-    <ul class="nav-links">
-      <li>
-        <a href="home.html">Chat</a>
-      </li>
-      <li>
-        <a href="telehealth.html">Make an appointment</a>
-      </li>
-      <li>
-        <a href="call.html">Contact 911</a>
-      </li>
-    </ul>
-  </nav>
-  <h1> How can I assist you today? </h1>
-  <img src="./images/BFF.png" alt="BFF" style="width:500px;height:500px;">
-  <label for="Speech Recognition">Speech Recognition</label>
-  <input type="text" name="" id="speechToText" placeholder="Say Something" onclick="startListening()">
-
-  <script>
-    function startListening() {
-      var recognition = new webkitSpeechRecognition();
-      recognition.lang = "en-US";
-      recognition.onresult = function(event) {
-        console.log(event);
-        document.getElementById('speechToText').value = event.results[0][0].transcript;
-      }
-      recognition.start();
-    }
-
-    function speak(text) {
-      var utterance = new SpeechSynthesisUtterance(text);
-      window.speechSynthesis.speak(utterance);
-    }
-  </script>
+  <h1> Hi there! I'm your BWellFF. How can I assist you today? </h1>
+  <img src="BFF.png" alt="BFF" style="width:500px;height:500px;">
 </body>
 </html>
+

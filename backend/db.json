@@ -1,1 +1,793 @@
-{"_default": {"1": {"name": "new", "age": 123}, "2": {"name": "Pure Leaf", "age": 5}, "3": {"name": "string", "age": 0}, "4": {"name": "edgar", "age": 99}, "5": {"name": "edgar", "age": 99}, "6": {"name": "edgar", "age": 99}}}
+{
+    "_default": {
+        "1": {
+            "name": "new",
+            "age": 123
+        },
+        "2": {
+            "ID": 0,
+            "name": "covid",
+            "age": 0,
+            "recent_changes_in_health_yn": true,
+            "pre-existing_conditions_yn": [
+                "string"
+            ],
+            "medications": true,
+            "any_allergies_yn": true
+        },
+        "3": {
+            "ID": 0,
+            "name": "where did my name GOOOOOOO",
+            "age": 0,
+            "recent_changes_in_health_yn": true,
+            "pre-existing_conditions_yn": [
+                "string"
+            ],
+            "medications": true,
+            "any_allergies_yn": true
+        },
+        "4": {
+            "ID": 0,
+            "name": "reeeeeeeeeeee",
+            "age": 0,
+            "recent_changes_in_health_yn": true,
+            "pre-existing_conditions": [
+                "string"
+            ],
+            "medications": true,
+            "any_allergies_yn": true,
+            "address": {
+                "street": "string",
+                "city": "string",
+                "state": "string",
+                "zip": "string"
+            },
+            "contact": {
+                "phone": "string",
+                "email": "string"
+            },
+            "emergency_contact": {
+                "name": "string",
+                "relationship": "string",
+                "phone": "string",
+                "email": "string"
+            },
+            "questions": [
+                {
+                    "question": "string",
+                    "answer": "string",
+                    "timestamp": "string"
+                }
+            ]
+        },
+        "5": {
+            "ID": 0,
+            "name": "reeeeeeeeeeee",
+            "age": 0,
+            "recent_changes_in_health_yn": true,
+            "pre-existing_conditions": [
+                "string"
+            ],
+            "medications": true,
+            "any_allergies_yn": true
+        },
+        "6": {
+            "ID": 0,
+            "name": "reeeeeeeeeeee",
+            "age": 0,
+            "recent_changes_in_health_yn": true,
+            "pre-existing_conditions": [
+                "string"
+            ],
+            "medications": true,
+            "any_allergies_yn": true
+        },
+        "7": {
+            "ID": 0,
+            "name": "Erika",
+            "age": 0,
+            "recent_changes_in_health_yn": true,
+            "pre-existing_conditions": [
+                "string"
+            ],
+            "medications": true,
+            "any_allergies_yn": true
+        },
+        "8": {
+            "ID": 0,
+            "name": "Erika",
+            "age": 0,
+            "recent_changes_in_health_yn": true,
+            "pre-existing_conditions": [
+                "string"
+            ],
+            "medications": true,
+            "any_allergies_yn": true
+        },
+        "9": {
+            "ID": 0,
+            "name": "Arnib",
+            "age": 0,
+            "recent_changes_in_health_yn": true,
+            "pre-existing_conditions": [
+                "string"
+            ],
+            "medications": true,
+            "any_allergies_yn": true
+        },
+        "10": {
+            "ID": 101,
+            "name": "Jane Doe",
+            "age": 28,
+            "recent_changes_in_health_yn": true,
+            "pre-existing_conditions": [
+                "Asthma"
+            ],
+            "medications": [
+                {
+                    "name": "Albuterol",
+                    "dosage": "2 puffs every 4 hours as needed",
+                    "reason_for_taking": "Prevent asthma symptoms"
+                }
+            ],
+            "any_allergies_yn": true,
+            "allergies": [
+                {
+                    "substance": "Peanuts",
+                    "reaction": "Anaphylaxis"
+                }
+            ],
+            "symptoms": [
+                {
+                    "symptom": "Shortness of breath",
+                    "duration": "3 days",
+                    "severity": "Moderate",
+                    "how_it_affects_daily_life": "Difficulty performing physical activities"
+                },
+                {
+                    "symptom": "Wheezing",
+                    "duration": "2 days",
+                    "severity": "Mild",
+                    "how_it_affects_daily_life": "Some discomfort during the night"
+                }
+            ],
+            "lifestyle_factors": {
+                "diet": "Vegetarian, high in fruits and vegetables",
+                "exercise": "Jogging 30 minutes daily",
+                "stress_level": "Moderate, due to work deadlines",
+                "sleep_quality": "Good, approximately 7-8 hours nightly"
+            },
+            "recent_travel_history": "No recent travel",
+            "recent_exposure_to_sick_individuals": "No known exposure",
+            "family_history_of_illnesses": "Father has type 2 diabetes, mother has hypertension",
+            "address": {
+                "street": "123 Main St",
+                "city": "Anytown",
+                "state": "Anystate",
+                "zip": "12345"
+            },
+            "contact": {
+                "phone": "555-123-4567",
+                "email": "janedoe@example.com"
+            },
+            "emergency_contact": {
+                "name": "John Doe",
+                "relationship": "Brother",
+                "phone": "555-987-6543",
+                "email": "johndoe@example.com"
+            },
+            "questions": [
+                {
+                    "question": "How often do you experience asthma attacks?",
+                    "answer": "2-3 times a month",
+                    "timestamp": "2023-10-05T14:48:00Z"
+                },
+                {
+                    "question": "Have you been using your inhaler more frequently lately?",
+                    "answer": "Yes, especially in the past week",
+                    "timestamp": "2023-10-06T09:22:00Z"
+                }
+            ]
+        },
+        "11": {
+            "ID": 101,
+            "name": "Jane Doe",
+            "age": 28,
+            "recent_changes_in_health_yn": true,
+            "pre-existing_conditions": [
+                "Asthma"
+            ],
+            "medications": [
+                {
+                    "name": "Albuterol",
+                    "dosage": "2 puffs every 4 hours as needed",
+                    "reason_for_taking": "Prevent asthma symptoms"
+                }
+            ],
+            "any_allergies_yn": true,
+            "allergies": [
+                {
+                    "substance": "Peanuts",
+                    "reaction": "Anaphylaxis"
+                }
+            ],
+            "symptoms": [
+                {
+                    "symptom": "Shortness of breath",
+                    "duration": "3 days",
+                    "severity": "Moderate",
+                    "how_it_affects_daily_life": "Difficulty performing physical activities"
+                },
+                {
+                    "symptom": "Wheezing",
+                    "duration": "2 days",
+                    "severity": "Mild",
+                    "how_it_affects_daily_life": "Some discomfort during the night"
+                }
+            ],
+            "lifestyle_factors": {
+                "diet": "Vegetarian, high in fruits and vegetables",
+                "exercise": "Jogging 30 minutes daily",
+                "stress_level": "Moderate, due to work deadlines",
+                "sleep_quality": "Good, approximately 7-8 hours nightly"
+            },
+            "recent_travel_history": "No recent travel",
+            "recent_exposure_to_sick_individuals": "No known exposure",
+            "family_history_of_illnesses": "Father has type 2 diabetes, mother has hypertension",
+            "address": {
+                "street": "123 Main St",
+                "city": "Anytown",
+                "state": "Anystate",
+                "zip": "12345"
+            },
+            "contact": {
+                "phone": "555-123-4567",
+                "email": "janedoe@example.com"
+            },
+            "emergency_contact": {
+                "name": "John Doe",
+                "relationship": "Brother",
+                "phone": "555-987-6543",
+                "email": "johndoe@example.com"
+            },
+            "questions": [
+                {
+                    "question": "How often do you experience asthma attacks?",
+                    "answer": "2-3 times a month",
+                    "timestamp": "2023-10-05T14:48:00Z"
+                },
+                {
+                    "question": "Have you been using your inhaler more frequently lately?",
+                    "answer": "Yes, especially in the past week",
+                    "timestamp": "2023-10-06T09:22:00Z"
+                }
+            ]
+        },
+        "12": {
+            "ID": 101,
+            "name": "Erika sadsad",
+            "age": 19,
+            "recent_changes_in_health_yn": true,
+            "pre-existing_conditions": [
+                "Asthma"
+            ],
+            "medications": [
+                {
+                    "name": "Albuterol",
+                    "dosage": "2 puffs every 4 hours as needed",
+                    "reason_for_taking": "Prevent asthma symptoms"
+                }
+            ],
+            "any_allergies_yn": true,
+            "allergies": [
+                {
+                    "substance": "Peanuts",
+                    "reaction": "Anaphylaxis"
+                }
+            ],
+            "symptoms": [
+                {
+                    "symptom": "Shortness of breath",
+                    "duration": "3 days",
+                    "severity": "Moderate",
+                    "how_it_affects_daily_life": "Difficulty performing physical activities"
+                },
+                {
+                    "symptom": "Wheezing",
+                    "duration": "2 days",
+                    "severity": "Mild",
+                    "how_it_affects_daily_life": "Some discomfort during the night"
+                }
+            ],
+            "lifestyle_factors": {
+                "diet": "Vegetarian, high in fruits and vegetables",
+                "exercise": "Jogging 30 minutes daily",
+                "stress_level": "Moderate, due to work deadlines",
+                "sleep_quality": "Good, approximately 7-8 hours nightly"
+            },
+            "recent_travel_history": "No recent travel",
+            "recent_exposure_to_sick_individuals": "No known exposure",
+            "family_history_of_illnesses": "Father has type 2 diabetes, mother has hypertension",
+            "address": {
+                "street": "123 Main St",
+                "city": "Anytown",
+                "state": "Anystate",
+                "zip": "12345"
+            },
+            "contact": {
+                "phone": "555-123-4567",
+                "email": "janedoe@example.com"
+            },
+            "emergency_contact": {
+                "name": "John Doe",
+                "relationship": "Brother",
+                "phone": "555-987-6543",
+                "email": "johndoe@example.com"
+            },
+            "questions": [
+                {
+                    "question": "How often do you experience asthma attacks?",
+                    "answer": "2-3 times a month",
+                    "timestamp": "2023-10-05T14:48:00Z"
+                },
+                {
+                    "question": "Have you been using your inhaler more frequently lately?",
+                    "answer": "Yes, especially in the past week",
+                    "timestamp": "2023-10-06T09:22:00Z"
+                }
+            ]
+        },
+        "13": {
+            "ID": 30,
+            "name": "Armin E. Arlert",
+            "age": 25,
+            "recent_changes_in_health_yn": true,
+            "pre-existing_conditions": [
+                "Asthma"
+            ],
+            "medications": [
+                {
+                    "name": "Albuterol",
+                    "dosage": "2 puffs every 4 hours as needed",
+                    "reason_for_taking": "Prevent asthma symptoms"
+                }
+            ],
+            "any_allergies_yn": true,
+            "allergies": [
+                {
+                    "substance": "Peanuts",
+                    "reaction": "Anaphylaxis"
+                }
+            ],
+            "symptoms": [
+                {
+                    "symptom": "Shortness of breath",
+                    "duration": "3 days",
+                    "severity": "Moderate",
+                    "how_it_affects_daily_life": "Difficulty performing physical activities"
+                },
+                {
+                    "symptom": "Wheezing",
+                    "duration": "2 days",
+                    "severity": "Mild",
+                    "how_it_affects_daily_life": "Some discomfort during the night"
+                }
+            ],
+            "lifestyle_factors": {
+                "diet": "Vegetarian, high in fruits and vegetables",
+                "exercise": "Jogging 30 minutes daily",
+                "stress_level": "Moderate, due to work deadlines",
+                "sleep_quality": "Good, approximately 7-8 hours nightly"
+            },
+            "recent_travel_history": "No recent travel",
+            "recent_exposure_to_sick_individuals": "No known exposure",
+            "family_history_of_illnesses": "Father has type 2 diabetes, mother has hypertension",
+            "address": {
+                "street": "123 Main St",
+                "city": "Anytown",
+                "state": "Anystate",
+                "zip": "12345"
+            },
+            "contact": {
+                "phone": "555-123-4567",
+                "email": "janedoe@example.com"
+            },
+            "emergency_contact": {
+                "name": "John Doe",
+                "relationship": "Brother",
+                "phone": "555-987-6543",
+                "email": "johndoe@example.com"
+            },
+            "questions": [
+                {
+                    "question": "How often do you experience asthma attacks?",
+                    "answer": "2-3 times a month",
+                    "timestamp": "2023-10-05T14:48:00Z"
+                },
+                {
+                    "question": "Have you been using your inhaler more frequently lately?",
+                    "answer": "Yes, especially in the past week",
+                    "timestamp": "2023-10-06T09:22:00Z"
+                }
+            ]
+        },
+        "14": {
+            "ID": 30,
+            "name": "Armin E. Arlert",
+            "age": 25,
+            "recent_changes_in_health_yn": true,
+            "pre-existing_conditions": [
+                "Asthma"
+            ],
+            "medications": [
+                {
+                    "name": "Albuterol",
+                    "dosage": "2 puffs every 4 hours as needed",
+                    "reason_for_taking": "Prevent asthma symptoms"
+                }
+            ],
+            "any_allergies_yn": true,
+            "allergies": [
+                {
+                    "substance": "Peanuts",
+                    "reaction": "Anaphylaxis"
+                }
+            ],
+            "symptoms": [
+                {
+                    "symptom": "Shortness of breath",
+                    "duration": "3 days",
+                    "severity": "Moderate",
+                    "how_it_affects_daily_life": "Difficulty performing physical activities"
+                },
+                {
+                    "symptom": "Wheezing",
+                    "duration": "2 days",
+                    "severity": "Mild",
+                    "how_it_affects_daily_life": "Some discomfort during the night"
+                }
+            ],
+            "lifestyle_factors": {
+                "diet": "Vegetarian, high in fruits and vegetables",
+                "exercise": "Jogging 30 minutes daily",
+                "stress_level": "Moderate, due to work deadlines",
+                "sleep_quality": "Good, approximately 7-8 hours nightly"
+            },
+            "recent_travel_history": "No recent travel",
+            "recent_exposure_to_sick_individuals": "No known exposure",
+            "family_history_of_illnesses": "Father has type 2 diabetes, mother has hypertension",
+            "address": {
+                "street": "123 Main St",
+                "city": "Anytown",
+                "state": "Anystate",
+                "zip": "12345"
+            },
+            "contact": {
+                "phone": "555-123-4567",
+                "email": "janedoe@example.com"
+            },
+            "emergency_contact": {
+                "name": "John Doe",
+                "relationship": "Brother",
+                "phone": "555-987-6543",
+                "email": "johndoe@example.com"
+            },
+            "questions": [
+                {
+                    "question": "How often do you experience asthma attacks?",
+                    "answer": "2-3 times a month",
+                    "timestamp": "2023-10-05T14:48:00Z"
+                },
+                {
+                    "question": "Have you been using your inhaler more frequently lately?",
+                    "answer": "Yes, especially in the past week",
+                    "timestamp": "2023-10-06T09:22:00Z"
+                }
+            ]
+        },
+        "15": {
+            "ID": 30,
+            "name": "Armin E. Arlert",
+            "age": 25,
+            "recent_changes_in_health_yn": true,
+            "pre-existing_conditions": [
+                "Asthma"
+            ],
+            "medications": [
+                {
+                    "name": "Albuterol",
+                    "dosage": "2 puffs every 4 hours as needed",
+                    "reason_for_taking": "Prevent asthma symptoms"
+                }
+            ],
+            "any_allergies_yn": true,
+            "allergies": [
+                {
+                    "substance": "Peanuts",
+                    "reaction": "Anaphylaxis"
+                }
+            ],
+            "symptoms": [
+                {
+                    "symptom": "Shortness of breath",
+                    "duration": "3 days",
+                    "severity": "Moderate",
+                    "how_it_affects_daily_life": "Difficulty performing physical activities"
+                },
+                {
+                    "symptom": "Wheezing",
+                    "duration": "2 days",
+                    "severity": "Mild",
+                    "how_it_affects_daily_life": "Some discomfort during the night"
+                }
+            ],
+            "lifestyle_factors": {
+                "diet": "Vegetarian, high in fruits and vegetables",
+                "exercise": "Jogging 30 minutes daily",
+                "stress_level": "Moderate, due to work deadlines",
+                "sleep_quality": "Good, approximately 7-8 hours nightly"
+            },
+            "recent_travel_history": "No recent travel",
+            "recent_exposure_to_sick_individuals": "No known exposure",
+            "family_history_of_illnesses": "Father has type 2 diabetes, mother has hypertension",
+            "address": {
+                "street": "123 Main St",
+                "city": "Anytown",
+                "state": "Anystate",
+                "zip": "12345"
+            },
+            "contact": {
+                "phone": "555-123-4567",
+                "email": "janedoe@example.com"
+            },
+            "emergency_contact": {
+                "name": "John Doe",
+                "relationship": "Brother",
+                "phone": "555-987-6543",
+                "email": "johndoe@example.com"
+            },
+            "questions": [
+                {
+                    "question": "How often do you experience asthma attacks?",
+                    "answer": "2-3 times a month",
+                    "timestamp": "2023-10-05T14:48:00Z"
+                },
+                {
+                    "question": "Have you been using your inhaler more frequently lately?",
+                    "answer": "Yes, especially in the past week",
+                    "timestamp": "2023-10-06T09:22:00Z"
+                }
+            ]
+        },
+        "16": {
+            "ID": 30,
+            "name": "Armin E. Arlert",
+            "age": 25,
+            "recent_changes_in_health_yn": true,
+            "pre-existing_conditions": [
+                "Asthma"
+            ],
+            "medications": [
+                {
+                    "name": "Albuterol",
+                    "dosage": "2 puffs every 4 hours as needed",
+                    "reason_for_taking": "Prevent asthma symptoms"
+                }
+            ],
+            "any_allergies_yn": true,
+            "allergies": [
+                {
+                    "substance": "Peanuts",
+                    "reaction": "Anaphylaxis"
+                }
+            ],
+            "symptoms": [
+                {
+                    "symptom": "Shortness of breath",
+                    "duration": "3 days",
+                    "severity": "Moderate",
+                    "how_it_affects_daily_life": "Difficulty performing physical activities"
+                },
+                {
+                    "symptom": "Wheezing",
+                    "duration": "2 days",
+                    "severity": "Mild",
+                    "how_it_affects_daily_life": "Some discomfort during the night"
+                }
+            ],
+            "lifestyle_factors": {
+                "diet": "Vegetarian, high in fruits and vegetables",
+                "exercise": "Jogging 30 minutes daily",
+                "stress_level": "Moderate, due to work deadlines",
+                "sleep_quality": "Good, approximately 7-8 hours nightly"
+            },
+            "recent_travel_history": "No recent travel",
+            "recent_exposure_to_sick_individuals": "No known exposure",
+            "family_history_of_illnesses": "Father has type 2 diabetes, mother has hypertension",
+            "address": {
+                "street": "123 Main St",
+                "city": "Anytown",
+                "state": "Anystate",
+                "zip": "12345"
+            },
+            "contact": {
+                "phone": "555-123-4567",
+                "email": "janedoe@example.com"
+            },
+            "emergency_contact": {
+                "name": "John Doe",
+                "relationship": "Brother",
+                "phone": "555-987-6543",
+                "email": "johndoe@example.com"
+            }
+        },
+        "17": {
+            "ID": 709,
+            "name": "j",
+            "age": 1,
+            "recent_changes_in_health_yn": false,
+            "pre_existing_conditions": [
+                "1"
+            ],
+            "medications": [
+                {
+                    "name": "1",
+                    "dosage": "1",
+                    "reason_for_taking": "1"
+                }
+            ],
+            "any_allergies_yn": false,
+            "allergies": [
+                {
+                    "substance": "",
+                    "reaction": ""
+                }
+            ],
+            "symptoms": [
+                {
+                    "symptom": "1",
+                    "duration": "1",
+                    "severity": "Mild",
+                    "how_it_affects_daily_life": "1"
+                }
+            ],
+            "lifestyle_factors": {
+                "diet": "1",
+                "exercise": "1",
+                "stress_level": "Low",
+                "sleep_quality": "Poor"
+            },
+            "recent_travel_history": "1",
+            "recent_exposure_to_sick_individuals": false,
+            "family_history_of_illnesses": "11",
+            "address": {
+                "street": "",
+                "city": "",
+                "state": "",
+                "zip": ""
+            },
+            "contact": {
+                "phone": "",
+                "email": ""
+            },
+            "emergency_contact": {
+                "name": "",
+                "relationship": "",
+                "phone": "",
+                "email": ""
+            }
+        },
+        "18": {
+            "ID": 319,
+            "name": "Itzel",
+            "age": 1,
+            "recent_changes_in_health_yn": false,
+            "pre_existing_conditions": [
+                "1"
+            ],
+            "medications": [
+                {
+                    "name": "1",
+                    "dosage": "1",
+                    "reason_for_taking": "1"
+                }
+            ],
+            "any_allergies_yn": false,
+            "allergies": [
+                {
+                    "substance": "",
+                    "reaction": ""
+                }
+            ],
+            "symptoms": [
+                {
+                    "symptom": "1",
+                    "duration": "1",
+                    "severity": "Mild",
+                    "how_it_affects_daily_life": "1"
+                }
+            ],
+            "lifestyle_factors": {
+                "diet": "1",
+                "exercise": "1",
+                "stress_level": "Low",
+                "sleep_quality": "Poor"
+            },
+            "recent_travel_history": "1",
+            "recent_exposure_to_sick_individuals": false,
+            "family_history_of_illnesses": "11",
+            "address": {
+                "street": "",
+                "city": "",
+                "state": "",
+                "zip": ""
+            },
+            "contact": {
+                "phone": "",
+                "email": ""
+            },
+            "emergency_contact": {
+                "name": "",
+                "relationship": "",
+                "phone": "",
+                "email": ""
+            }
+        },
+        "19": {
+            "ID": 942,
+            "name": "ukelele",
+            "age": 2,
+            "recent_changes_in_health_yn": false,
+            "pre_existing_conditions": [
+                "2"
+            ],
+            "medications": [
+                {
+                    "name": "2",
+                    "dosage": "2",
+                    "reason_for_taking": "2"
+                }
+            ],
+            "any_allergies_yn": false,
+            "allergies": [
+                {
+                    "substance": "",
+                    "reaction": ""
+                }
+            ],
+            "symptoms": [
+                {
+                    "symptom": "2",
+                    "duration": "2",
+                    "severity": "Mild",
+                    "how_it_affects_daily_life": "2"
+                }
+            ],
+            "lifestyle_factors": {
+                "diet": "2",
+                "exercise": "2",
+                "stress_level": "Low",
+                "sleep_quality": "Poor"
+            },
+            "recent_travel_history": "2",
+            "recent_exposure_to_sick_individuals": false,
+            "family_history_of_illnesses": "2",
+            "address": {
+                "street": "2",
+                "city": "2",
+                "state": "2",
+                "zip": "2"
+            },
+            "contact": {
+                "phone": "2",
+                "email": "2"
+            },
+            "emergency_contact": {
+                "name": "2",
+                "relationship": "2",
+                "phone": "2",
+                "email": "2"
+            }
+        }
+    }
+}

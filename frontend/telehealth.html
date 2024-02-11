@@ -99,6 +99,31 @@ function updateWelcomeMessage(name) {
   // Show the popup window
   document.getElementById("popup").style.display = "block";
 }
+function displayReminderPopup() {
+            const reminderModal = document.createElement('div');
+            reminderModal.classList.add('modal');
+
+            const modalContent = document.createElement('div');
+            modalContent.classList.add('modal-content');
+
+            const reminderMessage = document.createElement('p');
+            reminderMessage.textContent = "Your video call starts in 5 minutes";
+
+            const joinButton = document.createElement('button');
+            joinButton.textContent = "Join Call";
+            joinButton.addEventListener('click', function() {
+                
+                alert("Joining the call...");
+              
+                reminderModal.style.display = "none";
+            });
+
+            modalContent.appendChild(reminderMessage);
+            modalContent.appendChild(joinButton);
+            reminderModal.appendChild(modalContent);
+
+            document.body.appendChild(reminderModal);
+        }
 
      function openConfirmationPopup() {
   // Get the selected date and time
@@ -121,6 +146,8 @@ function updateWelcomeMessage(name) {
 
   // Show the second popup window
   document.getElementById("confirmationPopup").style.display = "block";
+
+  setTimeout(displayReminderPopup, 5000);
 }
 function closeConfirmationPopup() {
   // Close the second popup window
@@ -245,6 +272,39 @@ function postData() {
         console.error('Error:', error);
     });
 }    
+
+function makePhoneCall() {
+  // Replace these placeholders with your actual Twilio credentials
+  const accountSid = 'ACc40236fa8e569a3414ccf367316446de';
+  const authToken = '02cb814f153e96a44cbe1ccf21276e9f';
+  
+  // Phone numbers
+  const fromNumber = '+18333592755';
+  const toNumber = '+17207891351';
+
+  // Twilio API endpoint for making calls
+  const twilioEndpoint = `https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Calls.json`;
+
+  // Data for making the call
+  const postData = {
+    To: toNumber,
+    From: fromNumber,
+    Url: 'http://demo.twilio.com/docs/voice.xml' // URL to TwiML document
+  };
+
+  // Send POST request to initiate the call
+  fetch(twilioEndpoint, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': 'Basic ' + btoa(`${accountSid}:${authToken}`)
+    },
+    body: new URLSearchParams(postData)
+  })
+  .then(response => response.json())
+  .then(data => console.log('Call initiated:', data))
+  .catch(error => console.error('Error:', error));
+}
 </script> 
  
 </body>

@@ -2,13 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" type = "text/css" href="quest.css">
     <title>Questionnaire</title>
     <!-- Include your CSS here -->
 </head>
 <body>
+    <!-- <h1>BWellFF</h1> -->
+    <nav>
+        <div class="logo">
+            <img id="logo" src="./images/BFF.png" style="width:auto;height:50px;">
+            
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="quest.html">Chat</a>
+            </li>
+            <li>
+                <a href="telehealth.html">Make an appointment</a>
+            </li>
+            <li>
+                <a href="call.html">Contact 911</a>
+            </li>
+        </ul>
+      </nav>
     <form id="patientForm">
         <div class="row">
-            <h2>Personal Information</h2>
+            <h1>Personal Information</h1>
+        </div>
             <div class="col">
                 <label for="patient_name">Name</label>
                 <input type="text" id="patient_name" name="name">
@@ -17,9 +38,8 @@
                 <label for="patient_age">Age</label>
                 <input type="number" id="patient_age" name="age">
             </div>
-        </div>
 
-        <div class="row">
+        <div class="row2">
             <h2>Health Information</h2>
             <div class="col">
                 <label>Recent Changes in Health:</label>
@@ -31,7 +51,7 @@
                 <textarea id="pre_existing_conditions" name="pre-existing_conditions"></textarea>
             </div>
             <!-- Repeat Medications, Allergies, and Symptoms in similar fashion -->
-            <div class="row">
+            <div class="row3">
                 <h2>Medications</h2>
                 <div id="medications">
                     <div class="medication-entry">
@@ -55,7 +75,7 @@
                 <button type="button" id="addMedication">Add Medication</button>
             </div>
 
-            <div class="row">
+            <div class="row4">
                 <label>Any Allergies?</label>
                 <input type="radio" id="allergies_yes" name="any_allergies_yn" value="true"><label for="allergies_yes">Yes</label>
                 <input type="radio" id="allergies_no" name="any_allergies_yn" value="false" checked><label for="allergies_no">No</label>
@@ -63,9 +83,9 @@
             
             <!-- Allergies like above-->
             <div id="allergiesSection" style="display: none;">
-                <div class="row">
+                <div class="row5">
                     <h2>Allergies</h2>
-                    <div class="row">
+                    <div class="row6">
                         <h2>Allergies</h2>
                         <div id="allergies">
                             <div class="allergy-entry">
@@ -87,7 +107,7 @@
                 </div>
             </div>
         <!-- Symptoms Section -->
-        <div class="row">
+        <div class="row7">
             <h2>Symptoms</h2>
             <div id="symptoms">
                 <div class="symptom-entry">
@@ -119,7 +139,7 @@
             <button type="button" id="addSymptom">Add Symptom</button>
         </div>
         </div>
-        <div class="row">
+        <div class="row8">
             <h2>Lifestyle Factors</h2>
             <div class="col">
                 <label for="diet">Diet</label>
@@ -147,7 +167,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row9">
             <h2>Additional Information</h2>
             <div class="col">
                 <label for="recent_travel_history">Recent Travel History</label>
@@ -164,7 +184,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row10">
             <h2>(OPTIONAL) Contact Information</h2>
             <!-- Address Fields -->
             <div class="col">
@@ -209,7 +229,7 @@
                 <input type="email" id="emergency_contact[email]" name="emergency_contact[email]">
             </div>
         </div>
-        <div class="row">
+        <div class="row11">
             <button type="button" id="submitForm">Submit</button>
         </div>
     </form>

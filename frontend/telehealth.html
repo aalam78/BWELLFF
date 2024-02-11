@@ -2,10 +2,310 @@
 <html>
 <head>
   <meta name = "viewport" content="width = device-width, initial-scale = 1.0">
+  <link rel = "stylesheet" type = "text/css" href="telehealth.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <title>TeleHealth</title>
 </head>
 <body>
-  <h1> Login Forms will go here</h1>
-  <img src="BFF.png" alt="BFF" style="width:500px;height:500px;">
+
+  <nav>
+    <div class="logo">
+        <img id="logo" src="./images/BFF.png" style="width:auto;height:50px;">
+    </div>
+    <ul class="nav-links">
+        <li>
+            <a href="quest.html">Chat</a>
+        </li>
+        <li>
+            <a href="telehealth.html">Make an appointment</a>
+        </li>
+        <li>
+            <a href="call.html">Contact 911</a>
+        </li>
+    </ul>
+  </nav>
+          <div id="welcomeMessage"><p></p>
+            <p id="namePlaceholder"></p>
+
+          </div>
+          
+            
+          <button class="custom-btn btn-6" onclick="openPopup()"><span>Check availability</span></button>
+    
+          <!-- Popup window -->
+<div id="popup" class="popup">
+  <div class="popup-container">
+    <h2>Select Date, Time, and Doctor</h2>
+    <input type="datetime-local" id="appointmentDateTime">
+    <select id="doctorSelect">
+      <option value="Dr. Smith">Dr. Smith</option>
+      <option value="Dr. Johnson">Dr. Johnson</option>
+      <option value="Dr. Lee">Dr. Lee</option>
+    </select>
+    <button onclick="openConfirmationPopup()">Create</button>
+  </div>
+</div>
+
+<!-- Second popup window to confirm selected date and time -->
+<div id="confirmationPopup" class="popup">
+  <div class="popup-container">
+    <h2>Appointment Confirmed</h2>
+    <p>Your appointment is scheduled for:</p>
+    <p id="selectedDateTime"></p>
+    <p>With Doctor: <span id="selectedDoctor"></span></p>
+    <button onclick="closeConfirmationPopup()">Close</button>
+  </div>
+</div>
+<div id="container">
+   <!-- input field for entering the person's name -->
+   <!-- <input type="text" id="personName2" placeholder="This is a test. Enter person's name"> -->
+   <!-- button to trigger the fetch operation -->
+   <!-- <button onclick="fetchPerson()">Post Person</button> -->
+</div>
+
+      <div id="bigContainer">
+
+      <img id="mainImage" src="./images/doc5.png" alt="BFF" style="width:18em;height:auto;">
+
+      </div>
+     
+      <div class='footnote'>Resources used: Illustrations from icon8.com</div>
+  <script>
+    // Function to generate a random name
+function getRandomName() {
+  const names = ['Alice', 'Bob', 'Charlie', 'Diana', 'Evan'];
+  const randomIndex = Math.floor(Math.random() * names.length);
+  return names[randomIndex];
+}
+// Get a random name
+const randomName = getRandomName();
+
+// Accessing the HTML element where the name will be displayed
+const randomNameDisplay = document.getElementById("namePlaceholder");
+
+// Adding text combined with the random name to the HTML element
+randomNameDisplay.textContent = "Welcome " + randomName + ", to Telehealth!";
+// Function to update the welcome message with the fetched name
+function updateWelcomeMessage(name) {
+  var welcomeDiv = document.getElementById("welcomeMessage");
+  var nameParagraph = welcomeDiv.querySelector("#namePlaceholder");
+  nameParagraph.textContent = name;
+
+  var welcomeParagraph = welcomeDiv.querySelector("p:first-of-type");
+  welcomeParagraph.textContent = "Welcome " + name + " to Telehealth!";
+}
+
+    function openPopup() {
+  // Show the popup window
+  document.getElementById("popup").style.display = "block";
+}
+function displayReminderPopup() {
+            const reminderModal = document.createElement('div');
+            reminderModal.classList.add('modal');
+
+            const modalContent = document.createElement('div');
+            modalContent.classList.add('modal-content');
+
+            const reminderMessage = document.createElement('p');
+            reminderMessage.textContent = "Your video call starts in 5 minutes";
+
+            const joinButton = document.createElement('button');
+            joinButton.textContent = "Join Call";
+            joinButton.addEventListener('click', function() {
+                
+                alert("Joining the call...");
+              
+                reminderModal.style.display = "none";
+            });
+
+            modalContent.appendChild(reminderMessage);
+            modalContent.appendChild(joinButton);
+            reminderModal.appendChild(modalContent);
+
+            document.body.appendChild(reminderModal);
+        }
+
+     function openConfirmationPopup() {
+  // Get the selected date and time
+  const dateTimeInput = document.getElementById("appointmentDateTime");
+  const selectedDateTime = dateTimeInput.value;
+  
+    // Get the selected doctor
+  const doctorSelect = document.getElementById("doctorSelect");
+  const selectedDoctor = doctorSelect.options[doctorSelect.selectedIndex].text;
+
+  // Check if a date and time is selected
+  if (!selectedDateTime) {
+    alert("Please select a date and time for the appointment.");
+    return;
+  }
+  // Display the selected doctor in the second popup window
+  document.getElementById("selectedDoctor").innerText = selectedDoctor;
+  // Display the selected date and time in the second popup window
+  document.getElementById("selectedDateTime").innerText = selectedDateTime;
+
+  // Show the second popup window
+  document.getElementById("confirmationPopup").style.display = "block";
+
+  setTimeout(displayReminderPopup, 5000);
+}
+function closeConfirmationPopup() {
+  // Close the second popup window
+  document.getElementById("confirmationPopup").style.display = "none";
+  // Close the first popup window
+  document.getElementById("popup").style.display = "none";
+}
+
+    // Array of image paths
+    var imagePaths = [
+        "./images/doc2.png",
+        "./images/doc3.png",
+        "./images/doc4.png",
+        "./images/doc5.png"
+    ];
+
+    var currentIndex = 0;
+
+    function switchImageAutomatically() {
+        
+        var mainImage = document.getElementById("mainImage");
+
+        currentIndex++;
+
+        // If the index is out of bounds, reset it
+        if (currentIndex >= imagePaths.length) {
+            currentIndex = 0;
+        }
+
+        // Src attribute of the main image to the next image path
+        mainImage.src = imagePaths[currentIndex];
+    }
+
+    // SwitchImageAutomatically function every 5 seconds (5000 milliseconds)
+    setInterval(switchImageAutomatically, 5000);
+
+      function fetchPerson() {
+        const name = personName2.value.trim();
+        // const name = document.getElementById('personName').value.trim();
+        const url = `http://localhost:8000/api/patient/${encodeURIComponent(name)}`;
+        if (name === '') {
+            alert('Please enter a name.');
+            return;
+        }
+
+        fetch(url)
+            .then(response => {
+              console.log(response);  
+                if (!response.ok) {
+                    throw new Error('Person not found');
+                }
+                return response.json();
+            })
+            .then(person => {
+                const welcomeMessage = document.createElement('div');
+                welcomeMessage.textContent = `Welcome ${(name)} to Telehealth!`;
+                document.getElementById('welcomeMessage').appendChild(welcomeMessage);
+
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('welcomeMessage').innerHTML = 'Person not found';
+            });
+    }
+
+
+// Log the selected date to the console when changed
+datePicker.addEventListener('change', function() {
+    console.log('Selected date:', datePicker.value);
+    fetch('/post_date', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ date: selectedDate })
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+});
+
+
+
+// Example of using the function
+// console.log(getRandomName());
+// Get the content of the <p> element within the <div> with id "welcomeMessage"
+  var welcomeDiv = document.getElementById("welcomeMessage");
+var nameParagraph = welcomeDiv.querySelector("#namePlaceholder");
+
+
+
+// Update the content of the <p> element with the extracted name
+nameParagraph.textContent = name;
+// Update the welcome message to include the generated name
+var welcomeParagraph = welcomeDiv.querySelector("p:first-of-type");
+welcomeParagraph.textContent = "Welcome " + name + " to Telehealth!";
+function postData() {
+    const url = `http://localhost:8000/api/people/`;
+    const data = {
+        name: 'name',
+        age: 2
+    };
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Data sent successfully:', data);
+        // Handle response data here
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}    
+
+function makePhoneCall() {
+  // Replace these placeholders with your actual Twilio credentials
+  const accountSid = 'ACc40236fa8e569a3414ccf367316446de';
+  const authToken = '02cb814f153e96a44cbe1ccf21276e9f';
+  
+  // Phone numbers
+  const fromNumber = '+18333592755';
+  const toNumber = '+17207891351';
+
+  // Twilio API endpoint for making calls
+  const twilioEndpoint = `https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Calls.json`;
+
+  // Data for making the call
+  const postData = {
+    To: toNumber,
+    From: fromNumber,
+    Url: 'http://demo.twilio.com/docs/voice.xml' // URL to TwiML document
+  };
+
+  // Send POST request to initiate the call
+  fetch(twilioEndpoint, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': 'Basic ' + btoa(`${accountSid}:${authToken}`)
+    },
+    body: new URLSearchParams(postData)
+  })
+  .then(response => response.json())
+  .then(data => console.log('Call initiated:', data))
+  .catch(error => console.error('Error:', error));
+}
+</script> 
+ 
 </body>
 </html>

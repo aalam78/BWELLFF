@@ -1,0 +1,249 @@
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 66px;
+    border-bottom: 1px solid rgba(51, 51, 51, 0.138);
+  }
+  
+  .nav-links {
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+  }
+  
+  .nav-links li {
+    list-style-type: none;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.59);
+    transition: 0.3s ease;
+  }
+  
+  .nav-links a:hover {
+    color: #172a3a;
+  }
+  body {
+      font-family: "Cormorant Garamont", serif;
+      
+      margin: 0;
+      padding: 0;
+      /* display: flex; */
+      /* justify-content: center; */
+      text-align: center;
+      align-items: center;
+      /* align-items: center; */
+      height: 100vh;
+      background-color: #c1dff0;
+     
+  }
+  
+  .h1{
+    font-size: 2em;
+    font-family:lucidatype;
+    color: #20023c;
+    margin-left: 0%;
+  }
+
+  /* flex grid */
+  .row {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+   }
+  
+  .col {
+    flex: 1;
+    /*border: .063em solid gainsboro;*/
+    padding: .5em;
+    overflow: hidden;
+  }
+  
+  img {
+    width: 10em;
+    /* justify-content: bottom; */
+    height: auto;
+   }
+   h1{
+    font-size: 2em;
+    color: #031033;
+
+    text-align: center;
+   }
+  
+  
+   /* form styles */
+  form {
+    border: .09em solid #004346;
+    width: 75%;
+    height: max-content;
+    margin-left: 12.5%;
+    text-align: center;
+    margin-top: 5em;
+    padding-bottom: 5em;
+    margin-bottom: 10em;
+    /* margin: 20% auto; */
+    border-radius: 2em;
+  }
+  
+  
+  input[type="text"] {
+    box-sizing: border-box;
+    width: 40%;
+  }
+  
+  #diagnosis_for_list {
+    font-size: .8em;
+  
+  }
+  
+  .row:nth-child(3), .row:nth-child(4), .row:nth-child(5), .row:nth-child(6) {
+    /*border: .063em solid gainsboro;*/
+    text-align: center;
+    
+  }
+  
+  .row:nth-child(3), .row:nth-child(5) {
+    /* background-color: whitesmoke; */
+    text-align: center;
+  }
+  
+  .row:first-child {
+    background-color: cadetblue;
+    padding-left: 80px;
+    border-top-right-radius: 2em;
+    border-top-left-radius: 2em;
+    text-align: center;
+    /* color: white; */
+  }
+  
+  .row:last-child {
+    text-align: center;
+    align-content: center;
+    padding: .4em;
+  }
+  
+  input[type="submit"] {
+    width: 100%;
+    background-color: coral;
+    border: none;
+    color: white;
+    padding: .3em;
+    border-radius: .15em;
+  }
+  
+  /* input[type="submit"]:hover {
+    background-color: tomato;
+  } */
+  button{
+    margin: 10px;
+    width: 20vh;
+    height: 5vh;
+    color: #b7fffd;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 1000;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+     7px 7px 20px 0px rgba(0,0,0,.1),
+     4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+  }
+ 
+button{
+    border-radius: 2em;
+    width: 10em;
+    height: 5em;;
+    background: rgb(10, 75, 180);
+    background: radial-gradient(circle, rgb(15, 118, 134) 0%, rgb(1, 12, 110) 100%);
+    line-height: 5vh;
+    padding: 0;
+    border: none;
+  }
+  button span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  button:before,
+  button:after {
+    position: absolute;
+    content: "";
+    height: 0%;
+    width: 1px;
+   box-shadow:
+     -1px -1px 20px 0px rgba(255,255,255,1),
+     -4px -4px 5px 0px rgba(255,255,255,1),
+     7px 7px 20px 0px rgba(0,0,0,.4),
+     4px 4px 5px 0px rgba(0,0,0,.3);
+  }
+  button:before {
+    right: 0;
+    top: 0;
+    transition: all 500ms ease;
+  }
+  button:after {
+    left: 0;
+    bottom: 0;
+    transition: all 500ms ease;
+  }
+  button:hover{
+    background: transparent;
+    color: #0f51a3;
+    box-shadow: none;
+  }
+  button:hover:before {
+    transition: all 500ms ease;
+    height: 100%;
+  }
+  button:hover:after {
+    transition: all 500ms ease;
+    height: 100%;
+  }
+  button span:before,
+  button span:after {
+    position: absolute;
+    content: "";
+    box-shadow:
+     -1px -1px 20px 0px rgba(255,255,255,1),
+     -4px -4px 5px 0px rgba(255,255,255,1),
+     7px 7px 20px 0px rgba(0,0,0,.4),
+     4px 4px 5px 0px rgba(0,0,0,.3);
+  }
+  button span:before {
+    left: 0;
+    top: 0;
+    width: 0%;
+    height: .5px;
+    transition: all 500ms ease;
+  }
+  button span:after {
+    right: 0;
+    bottom: 0;
+    width: 0%;
+    height: .5px;
+    transition: all 500ms ease;
+  }
+  .button span:hover:before {
+    width: 100%;
+  }
+  .button span:hover:after {
+    width: 100%;
+  }
+  
+  /* flex grid */
+  @media screen and (min-width: 400px) {
+      .row {
+      flex-direction: row;
+    }
+    
+    input[type="submit"] {
+      width: 6em;
+    }
+  }

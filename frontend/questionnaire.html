@@ -1,212 +1,276 @@
-<!-- Copyright (c) 2024 by Andre Watts (https://codepen.io/andrewatts85/pen/EWONRp)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- -->
-
- <!DOCTYPE html>
- <html>
- <head>
-   <meta name = "viewport" content="width = device-width, initial-scale = 1.0">
-    <link rel="stylesheet" href="questionnaire.css">
- <title>Questionnaire</title>
- </head>
- <body>
-   <h1>Pre-Health Screening </h1>
-   <img src="./images/BFF.png" alt="BFF" style="width:500px;height:500px;">
-
-    <!-- Name -->
+<!DOCTYPE html>
+<html>
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="questionnaire.css">
+   <title>Questionnaire</title>
+</head>
+<body>
+   <img src="./images/BFF.png" alt="BFF">
    <form>
-    <div class="row">
-      <div class="col">
-        <p>1. Name:</p>
+      <div class="row">
+         <div class="col">
+            <h1>Pre-Health Screening</h1>
+         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label for="name"><input type="text" name="name" id="name" placeholder="Your name" required /></label>
-      </div>
-    </div>
-    <!-- Age -->
-    <div class="row">
-      <div class="col">
-        <p>2. Age:</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label for="age"><input type="number" name="age" id="age" placeholder="Your age" required /></label>
-      </div>
-    </div>
 
-    <!-- Diagnosis -->
-    <script>
-    function toggleDiagnosisFor() {
-        var noRadio = document.getElementById('diagnosis_for_other');
-        var diagnosisForList = document.getElementById('diagnosis_for_list');
-          
-        diagnosisForList.style.display = noRadio.checked ? 'block' : 'none';
-    }
-    </script>
-    </head>
-    <body>
+      <!-- Name -->
+      <div class="row">
+         <div class="col">
+            <p>1. Name:</p>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col">
+            <label for="personName"><input type="text" id="personName" placeholder="Your name" required /></label>
+         </div>
+      </div>
 
-    <div class="row">
-        <div class="col">
-          <p>3. Is this diagnosis for you?</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-          <label for="diagnosis_for_self">
-            <input type="radio" name="diagnosis_for_self" id="diagnosis_for_self" value="yes" required /> Yes
-          </label>
-          <label for="diagnosis_for_other">
-            <input type="radio" name="diagnosis_for_self" id="diagnosis_for_other" value="no" onclick="toggleDiagnosisFor()" /> No
-          </label>
-        </div>
+      <!-- Age -->
+      <div class="row">
+         <div class="col">
+            <p>2. Age:</p>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col">
+            <label for="age"><input type="number" id="age" placeholder="Your age" required /></label>
+         </div>
+      </div>
+
+      <!-- Diagnosis -->
+      <script>
+         function toggleDiagnosisFor() {
+            var noRadio = document.getElementById('diagnosis_for_other');
+            var diagnosisForList = document.getElementById('diagnosis_for_list');
+              
+            diagnosisForList.style.display = noRadio.checked ? 'block' : 'none';
+         }
+      </script>
+
+      <div class="row">
+         <div class="col">
+            <p>3. Is this diagnosis for you?</p>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col">
+            <label for="diagnosis_for_self">
+               <input type="radio" name="diagnosis_for_self" id="diagnosis_for_self" value="yes" required /> Yes
+            </label>
+            <label for="diagnosis_for_other">
+               <input type="radio" name="diagnosis_for_self" id="diagnosis_for_other" value="no" onclick="toggleDiagnosisFor()" /> No
+            </label>
+         </div>
       </div>
 
       <div class="row" id="diagnosis_for_list" style="display: none;">
-        <div class="col">
-          <p>Who are you diagnosing for?</p>
-          <select name="diagnosis_for" required>
-            <option value="For child">For kid</option>
-            <option value="For spouse">For spouse</option>
-            <option value="For parent">For parent</option>
-            <option value="For relative">For relative</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
+         <div class="col">
+            <p>Who are you diagnosing for?</p>
+            <select name="diagnosis_for" required>
+               <option value="For child">For kid</option>
+               <option value="For spouse">For spouse</option>
+               <option value="For parent">For parent</option>
+               <option value="For relative">For relative</option>
+               <option value="Other">Other</option>
+            </select>
+         </div>
       </div>
 
-    <!-- Recent Health Changes -->
-    <div class="row">
-      <div class="col">
-        <p>4. Have you experienced any recent changes in your health?</p>
+      <!-- Recent Health Changes -->
+      <div class="row">
+         <div class="col">
+            <p>4. Have you experienced any recent changes in your health?</p>
+         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label for="recent_health_changes">
-          <input type="radio" name="recent_health_changes" id="recent_health_changes_yes" value="yes" required /> Yes
-        </label>
-        <label for="recent_health_changes">
-          <input type="radio" name="recent_health_changes" id="recent_health_changes_no" value="no" /> No
-        </label>
+      <div class="row">
+         <div class="col">
+            <label for="recent_health_changes">
+               <input type="radio" name="recent_health_changes" id="recent_health_changes_yes" value="yes" required /> Yes
+            </label>
+            <label for="recent_health_changes">
+               <input type="radio" name="recent_health_changes" id="recent_health_changes_no" value="no" /> No
+            </label>
+         </div>
       </div>
-    </div>
 
-    <!--Pre-Existing medical conditions-->
-<script>
-function toggleMedicalConditions() {
-  var yesRadio = document.getElementById('pre_existing_conditions_yes');
-  var medicalConditions = document.getElementById('medical_conditions');
-  
-  medicalConditions.style.display = yesRadio.checked ? 'block' : 'none';
-}
-</script>
-</head>
-<body>
+      <!-- Pre-Existing medical conditions -->
+      <script>
+         function toggleMedicalConditions() {
+            var yesRadio = document.getElementById('pre_existing_conditions_yes');
+            var medicalConditions = document.getElementById('medical_conditions');
+            
+            medicalConditions.style.display = yesRadio.checked ? 'block' : 'none';
+         }
+      </script>
 
-<form>
-  <div class="row">
-    <div class="col">
-      <p>5. Do you have any pre-existing medical conditions?</p>
-    </div>
-  </div>
+      <div class="row">
+         <div class="col">
+            <p>5. Do you have any pre-existing medical conditions?</p>
+         </div>
+      </div>
 
-  <div class="row">
-    <div class="col">
-      <label for="pre_existing_conditions_yes">
-        <input type="radio" name="pre_existing_conditions" id="pre_existing_conditions_yes" value="yes" required onclick="toggleMedicalConditions()" /> Yes
-      </label>
-      <label for="pre_existing_conditions_no">
-        <input type="radio" name="pre_existing_conditions" id="pre_existing_conditions_no" value="no" onclick="toggleMedicalConditions()" /> No
-      </label>
-    </div>
-  </div>
+      <div class="row">
+         <div class="col">
+            <label for="pre_existing_conditions_yes">
+               <input type="radio" name="pre_existing_conditions" id="pre_existing_conditions_yes" value="yes" required onclick="toggleMedicalConditions()" /> Yes
+            </label>
+            <label for="pre_existing_conditions_no">
+               <input type="radio" name="pre_existing_conditions" id="pre_existing_conditions_no" value="no" onclick="toggleMedicalConditions()" /> No
+            </label>
+         </div>
+      </div>
 
-  <div class="row" id="medical_conditions" style="display: none;">
-    <div class="col">
-        <p>Select your current pre-existing medical conditions:</p>
-        <label for="hypertension">
-          <input type="checkbox" name="medical_conditions[]" id="hypertension" value="Hypertension" /> Hypertension
-        </label><br>
-        <label for="diabetes">
-          <input type="checkbox" name="medical_conditions[]" id="diabetes" value="Diabetes" /> Diabetes
-        </label><br>
-        <label for="asthma">
-          <input type="checkbox" name="medical_conditions[]" id="asthma" value="Asthma" /> Asthma
-        </label><br>
-        <label for="copd">
-          <input type="checkbox" name="medical_conditions[]" id="copd" value="Chronic obstructive pulmonary disease (COPD)" /> Chronic obstructive pulmonary disease (COPD)
-        </label><br>
-        <label for="cad">
-          <input type="checkbox" name="medical_conditions[]" id="cad" value="Coronary artery disease" /> Coronary artery disease
-        </label><br>
-        <label for="heart_failure">
-          <input type="checkbox" name="medical_conditions[]" id="heart_failure" value="Heart failure" /> Heart failure
-        </label><br>
-        <label for="stroke">
-          <input type="checkbox" name="medical_conditions[]" id="stroke" value="Stroke" /> Stroke
-        </label><br>
-        <label for="ckd">
-          <input type="checkbox" name="medical_conditions[]" id="ckd" value="Chronic kidney disease" /> Chronic kidney disease
-        </label><br>
-        <label for="cancer">
-          <input type="checkbox" name="medical_conditions[]" id="cancer" value="Cancer" /> Cancer
-        </label><br>
-        <label for="ra">
-          <input type="checkbox" name="medical_conditions[]" id="ra" value="Rheumatoid arthritis" /> Rheumatoid arthritis
-        </label><br>
-        <!-- Add more checkboxes for each medical condition -->
+      <div class="row" id="medical_conditions" style="display: none;">
+         <div class="col">
+            <p>Select your current pre-existing medical conditions:</p>
+            <label for="hypertension">
+               <input type="checkbox" name="medical_conditions[]" id="hypertension" value="Hypertension" /> Hypertension
+            </label><br>
+            <label for="diabetes">
+               <input type="checkbox" name="medical_conditions[]" id="diabetes" value="Diabetes" /> Diabetes
+            </label><br>
+            <label for="asthma">
+                <input type="checkbox" name="medical_conditions[]" id="asthma" value="Asthma" /> Asthma
+              </label><br>
+              <label for="copd">
+                <input type="checkbox" name="medical_conditions[]" id="copd" value="Chronic obstructive pulmonary disease (COPD)" /> Chronic obstructive pulmonary disease (COPD)
+              </label><br>
+              <label for="cad">
+                <input type="checkbox" name="medical_conditions[]" id="cad" value="Coronary artery disease" /> Coronary artery disease
+              </label><br>
+              <label for="heart_failure">
+                <input type="checkbox" name="medical_conditions[]" id="heart_failure" value="Heart failure" /> Heart failure
+              </label><br>
+              <label for="stroke">
+                <input type="checkbox" name="medical_conditions[]" id="stroke" value="Stroke" /> Stroke
+              </label><br>
+              <label for="ckd">
+                <input type="checkbox" name="medical_conditions[]" id="ckd" value="Chronic kidney disease" /> Chronic kidney disease
+              </label><br>
+              <label for="cancer">
+                <input type="checkbox" name="medical_conditions[]" id="cancer" value="Cancer" /> Cancer
+              </label><br>
+              <label for="ra">
+                <input type="checkbox" name="medical_conditions[]" id="ra" value="Rheumatoid arthritis" /> Rheumatoid arthritis
+              </label><br>
+              <!-- Add more checkboxes for each medical condition -->
+            </div>
+          </div>
+      
+      <!-- Taking medications -->
+      <div class="row">
+         <div class="col">
+            <p>6. Are you currently taking any medications?</p>
+         </div>
       </div>
-    </div>
-  
-    <!--Taking medications-->
-    <div class="row">
-      <div class="col">
-        <p>6. Are you currently taking any medications?</p>
+      <div class="row">
+         <div class="col">
+            <label for="taking_medications">
+               <input type="radio" name="taking_medications" id="taking_medications_yes" value="yes" required /> Yes
+            </label>
+            <label for="taking_medications">
+               <input type="radio" name="taking_medications" id="taking_medications_no" value="no" /> No
+            </label>
+         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label for="taking_medications">
-          <input type="radio" name="taking_medications" id="taking_medications_yes" value="yes" required /> Yes
-        </label>
-        <label for="taking_medications">
-          <input type="radio" name="taking_medications" id="taking_medications_no" value="no" /> No
-        </label>
+
+      <!-- Known allergies -->
+      <div class="row">
+         <div class="col">
+            <p>7. Do you have any known allergies?</p>
+         </div>
       </div>
-    </div>
-  
-    <!--Known allergies-->
-    <div class="row">
-      <div class="col">
-        <p>7. Do you have any known allergies?</p>
+      <div class="row">
+         <div class="col">
+            <label for="known_allergies">
+               <input type="radio" name="known_allergies" id="known_allergies_yes" value="yes" required /> Yes
+            </label>
+            <label for="known_allergies">
+               <input type="radio" name="known_allergies" id="known_allergies_no" value="no" /> No
+            </label>
+         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label for="known_allergies">
-          <input type="radio" name="known_allergies" id="known_allergies_yes" value="yes" required /> Yes
-        </label>
-        <label for="known_allergies">
-          <input type="radio" name="known_allergies" id="known_allergies_no" value="no" /> No
-        </label>
+
+      <div class="row">
+         <div class="col">
+            <!-- <input type="submit" onclick="fetchPerson()" value="Next" /> -->
+            <button class="custom-btn btn-6" onclick="fetchPerson()"><span>Next</span></button>
+         </div>
       </div>
-    </div>
-  
-    <div class="row">
-      <div class="col">
-        <input type="submit" value="Next"/>
-      </div>
-    </div>
-  </form>
-  
-  </body>
-  </html>
+   </form>
+
+   <button type="button" onclick="testPerson()">Test Person</button>
+
+   <script>
+    //   function fetchPerson() {
+    //      console.log('Fetching person');
+    //      const actualName = document.getElementById('personName').value.trim();
+    //      const age = document.getElementById('age').value;
+    //      const url = 'http://localhost:8000/api/people';
+    //      const data ={name: actualName, age: age};
+
+    //      console.log(data);
+
+    //      if (actualName === '') {
+    //         document.getElementById('welcomeMessage').innerHTML = 'Please enter your name';
+    //         return;
+    //      }
+
+    //      fetch(url, {
+    //            method: 'POST',
+    //            headers: {
+    //               'Content-Type': 'application/json'
+    //            },
+    //            body: JSON.stringify(data)
+    //      })
+    //      .then(response => {
+    //            if (!response.ok) {
+    //               throw new Error('Failed to add person');
+    //            }
+    //            return response.json();
+    //      })
+    //      .then(person => {
+    //            // Handle successful response (if needed)
+    //            console.log('Added person:', person);
+    //      })
+    //      .catch(error => {
+    //            console.error('Error:', error);
+    //      });
+    //   }
+
+      function testPerson() {
+         console.log('Testing person');
+         const name = document.getElementById('personName').value.trim();
+         const url = 'http://localhost:8000/api/people'; // Assuming this is your POST endpoint
+         const data = { name: name }; // Assuming you want to send the person's name in the request body
+
+         if (name === '') {
+               alert('Please enter a name.');
+               return;
+         }
+
+         fetch(url, {
+               method: 'POST',
+               headers: {
+                  'Content-Type': 'application/json'
+               },
+               body: JSON.stringify(data)
+         })
+         .then(response => {
+               if (!response.ok) {
+                  throw new Error('Failed to add person');
+               }
+               return response.json();
+         })
+         .then(person => {
+               // Handle successful response (if needed)
+               console.log('Added person:', person);
+         })
+         .catch(error => {
+               console.error('Error:', error);
+         });
+      }
+   </script>
+</body>
+</html>

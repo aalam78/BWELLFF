@@ -15,6 +15,18 @@ servers:
 
 components:
   schemas:
+    question:
+      type: object
+      properties:
+        question:
+          type: string
+        answer:
+          type: string
+        timestamp:
+          type: string
+      required:
+        - question
+        - answer
     Address:
       type: object
       properties:
@@ -69,7 +81,7 @@ components:
         #pre-quesitonnare
         recent_changes_in_health_yn:
           type: boolean
-        pre-existing_conditions_yn:
+        pre-existing_conditions:
           #array of strings that are conditions
           type: array
           items:
@@ -85,12 +97,16 @@ components:
           $ref: '#/components/schemas/contact'
         emergency_contact:
           $ref: '#/components/schemas/emergency_contact'
+        questions:
+          type: array
+          items:
+            $ref: '#/components/schemas/question'
       required:
         - ID
         - name
         - age
         - recent_changes_in_health_yn
-        - pre-existing_conditions_yn
+        - pre-existing_conditions
         - medications
         - any_allergies_yn
 paths:

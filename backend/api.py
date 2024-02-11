@@ -32,7 +32,7 @@ def get_diagnosis_by_id(body):
     prompt = "Given this patient's record as this: "   + str(patient) + '. Now the patient has this question: ' + prompt + '. What is the diagnosis in 20 words or less?' 
 
     diagnosis = chat_with_gpt(prompt)
-    
+    print(diagnosis.response)
     return diagnosis, 200
 
 def chat_with_gpt(prompt):

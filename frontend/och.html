@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Diagnosis</title>
+</head>
+<body>
+    <h2>Chat Diagnosis Form</h2>
+    <form id="chatForm">
+        <div>
+            <label for="userID">Your ID:</label>
+            <input type="text" id="userID" name="ID">
+        </div>
+        <div>
+            <label for="userFeeling">How are you feeling today?</label>
+            <input type="text" id="userFeeling" name="prompt">
+        </div>
+        <button type="button" id="submitChat">Submit</button>
+    </form>
+
+    <script>
+ document.getElementById('submitChat').addEventListener('click', async function() {
+    // Convert ID from string to integer
+    const patientID = parseInt(document.getElementById('userID').value, 10);
+    const userFeeling = document.getElementById('userFeeling').value;
+
+    const patientData = {
+        "ID": patientID,
+        "prompt": userFeeling
+    };
+
+    const url = 'http://localhost:8000/api/chat'; // Adjust the URL as needed
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(patientData)
+        });
+
+        if (response.ok) {
+            const jsonResponse = await response.json();
+            console.log('Response:', jsonResponse);
+            // Optionally display the diagnosis to the user
+            alert('Diagnosis: ' + jsonResponse.response); // Adjust depending on the actual response structure
+        } else {
+            console.error('Failed to submit chat. Status:', response.status);
+            // Optionally inform the user about the error
+            alert('Failed to get diagnosis. Please try again.');
+        }
+    } catch (error) {
+        console.error('Error submitting chat:', error);
+        // Optionally inform the user about the network error
+        alert('An error occurred. Please check your connection and try again.');
+    }
+});
+
+    </script>
+</body>
+</html>

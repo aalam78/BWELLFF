@@ -1,26 +1,26 @@
-// async function createPatient(patientData) {
-//         const url = 'http://localhost:8000'; // Adjust the URL based on where your API is hosted
+async function createPatient(patientData) {
+        const url = 'http://localhost:8000'; // Adjust the URL based on where your API is hosted
 
-//         try {
-//             const response = await fetch(url, {
-//                 method: 'POST',
-//                 headers: {
-//                     'Content-Type': 'application/json',
-//                 },
-//                 body: JSON.stringify(patientData)
-//             });
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(patientData)
+            });
 
-//             if (response.ok) {
-//                 const jsonResponse = await response.json();
-//                 console.log('Patient created:', jsonResponse);
-//                 return jsonResponse;
-//             } else {
-//                 console.error('Failed to create patient. Status:', response.status);
-//             }
-//         } catch (error) {
-//             console.error('Error creating patient:', error);
-//         }
-//     }
+            if (response.ok) {
+                const jsonResponse = await response.json();
+                console.log('Patient created:', jsonResponse);
+                return jsonResponse;
+            } else {
+                console.error('Failed to create patient. Status:', response.status);
+            }
+        } catch (error) {
+            console.error('Error creating patient:', error);
+        }
+    }
 
     // Example patient data
     const testPatient = {

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Questionnaire</title>
+    <!-- Include your CSS here -->
+</head>
+<body>
+    <form id="patientForm">
+        <div class="row">
+            <h2>Personal Information</h2>
+            <div class="col">
+                <label for="patient_name">Name</label>
+                <input type="text" id="patient_name" name="name">
+            </div>
+            <div class="col">
+                <label for="patient_age">Age</label>
+                <input type="number" id="patient_age" name="age">
+            </div>
+        </div>
+
+        <div class="row">
+            <h2>Health Information</h2>
+            <div class="col">
+                <label>Recent Changes in Health:</label>
+                <input type="radio" id="health_change_yes" name="recent_changes_in_health_yn" value="true"><label for="health_change_yes">Yes</label>
+                <input type="radio" id="health_change_no" name="recent_changes_in_health_yn" value="false" checked><label for="health_change_no">No</label>
+            </div>
+            <div class="col">
+                <label for="pre_existing_conditions">Pre-existing Conditions (COMMA SEPARATED)</label>
+                <textarea id="pre_existing_conditions" name="pre-existing_conditions"></textarea>
+            </div>
+            <!-- Repeat Medications, Allergies, and Symptoms in similar fashion -->
+            <div class="row">
+                <h2>Medications</h2>
+                <div id="medications">
+                    <div class="medication-entry">
+                        <div class="col">
+                            <label for="medication_name">Medication Name</label>
+                            <input type="text" id="medication_name" name="medications[name][]">
+                        </div>
+                        <div class="col">
+                            <label for="medication_dosage">Dosage</label>
+                            <input type="text" id="medication_dosage" name="medications[dosage][]">
+                        </div>
+                        <div class="col">
+                            <label for="medication_reason">Reason for Taking</label>
+                            <input type="text" id="medication_reason" name="medications[reason_for_taking][]">
+                        </div>
+                        <div class="col">
+                            <button type="button" class="removeMedication">Remove</button>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" id="addMedication">Add Medication</button>
+            </div>
+
+            <div class="row">
+                <label>Any Allergies?</label>
+                <input type="radio" id="allergies_yes" name="any_allergies_yn" value="true"><label for="allergies_yes">Yes</label>
+                <input type="radio" id="allergies_no" name="any_allergies_yn" value="false" checked><label for="allergies_no">No</label>
+            </div>
+            
+            <!-- Allergies like above-->
+            <div id="allergiesSection" style="display: none;">
+                <div class="row">
+                    <h2>Allergies</h2>
+                    <div class="row">
+                        <h2>Allergies</h2>
+                        <div id="allergies">
+                            <div class="allergy-entry">
+                                <div class="col">
+                                    <label for="allergy_substance">Substance</label>
+                                    <input type="text" id="allergy_substance" name="allergies[substance][]">
+                                </div>
+                                <div class="col">
+                                    <label for="allergy_reaction">Reaction</label>
+                                    <input type="text" id="allergy_reaction" name="allergies[reaction][]">
+                                </div>
+                                <div class="col">
+                                    <button type="button" class="removeAllergy">Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" id="addAllergy">Add Allergy</button>
+                    </div>
+                </div>
+            </div>
+        <!-- Symptoms Section -->
+        <div class="row">
+            <h2>Symptoms</h2>
+            <div id="symptoms">
+                <div class="symptom-entry">
+                    <div class="col">
+                        <label for="symptom_name">Symptom</label>
+                        <input type="text" id="symptom_name" name="symptoms[symptom][]">
+                    </div>
+                    <div class="col">
+                        <label for="symptom_duration">Duration</label>
+                        <input type="text" id="symptom_duration" name="symptoms[duration][]">
+                    </div>
+                    <div class="col">
+                        <label for="symptom_severity">Severity</label>
+                        <select id="symptom_severity" name="symptoms[severity][]">
+                            <option value="Mild">Mild</option>
+                            <option value="Moderate">Moderate</option>
+                            <option value="Severe">Severe</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="how_it_affects_daily_life">Effect on Daily Life</label>
+                        <input type="text" id="how_it_affects_daily_life" name="symptoms[how_it_affects_daily_life][]">
+                    </div>
+                    <div class="col">
+                        <button type="button" class="removeSymptom">Remove</button>
+                    </div>
+                </div>
+            </div>
+            <button type="button" id="addSymptom">Add Symptom</button>
+        </div>
+        </div>
+        <div class="row">
+            <h2>Lifestyle Factors</h2>
+            <div class="col">
+                <label for="diet">Diet</label>
+                <input type="text" id="diet" name="diet">
+            </div>
+            <div class="col">
+                <label for="exercise">Exercise</label>
+                <input type="text" id="exercise" name="exercise">
+            </div>
+            <div class="col">
+                <label for="stress_level">Stress Level</label>
+                <select id="stress_level" name="stress_level">
+                    <option value="Low">Low</option>
+                    <option value="Moderate">Moderate</option>
+                    <option value="High">High</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="sleep_quality">Sleep Quality</label>
+                <select id="sleep_quality" name="sleep_quality">
+                    <option value="Poor">Poor</option>
+                    <option value="Average">Average</option>
+                    <option value="Good">Good</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <h2>Additional Information</h2>
+            <div class="col">
+                <label for="recent_travel_history">Recent Travel History</label>
+                <input type="text" id="recent_travel_history" name="recent_travel_history">
+            </div>
+            <div class="col">
+                <label>Recent Exposure to Sick Individuals:</label>
+                <input type="radio" id="exposure_yes" name="recent_exposure_to_sick_individuals" value="true"><label for="exposure_yes">Yes</label>
+                <input type="radio" id="exposure_no" name="recent_exposure_to_sick_individuals" value="false" checked><label for="exposure_no">No</label>
+            </div>
+            <div class="col">
+                <label for="family_history_of_illnesses">Family History of Illnesses</label>
+                <textarea id="family_history_of_illnesses" name="family_history_of_illnesses"></textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <h2>(OPTIONAL) Contact Information</h2>
+            <!-- Address Fields -->
+            <div class="col">
+                <label for="address[street]">Street</label>
+                <input type="text" id="address[street]" name="address[street]">
+            </div>
+            <div class="col">
+                <label for="address[city]">City</label>
+                <input type="text" id="address[city]" name="address[city]">
+            </div>
+            <div class="col">
+                <label for="address[state]">State</label>
+                <input type="text" id="address[state]" name="address[state]">
+            </div>
+            <div class="col">
+                <label for="address[zip]">Zip</label>
+                <input type="text" id="address[zip]" name="address[zip]">
+            </div>
+            <!-- Contact and Emergency Contact Fields -->
+            <div class="col">
+                <label for="contact[phone]">Phone</label>
+                <input type="text" id="contact[phone]" name="contact[phone]">
+            </div>
+            <div class="col">
+                <label for="contact[email]">Email</label>
+                <input type="email" id="contact[email]" name="contact[email]">
+            </div>
+            <div class="col">
+                <label for="emergency_contact[name]">Emergency Contact Name</label>
+                <input type="text" id="emergency_contact[name]" name="emergency_contact[name]">
+            </div>
+            <div class="col">
+                <label for="emergency_contact[relationship]">Emergency Contact Relationship</label>
+                <input type="text" id="emergency_contact[relationship]" name="emergency_contact[relationship]">
+            </div>
+            <div class="col">
+                <label for="emergency_contact[phone]">Emergency Contact Phone</label>
+                <input type="text" id="emergency_contact[phone]" name="emergency_contact[phone]">
+            </div>
+            <div class="col">
+                <label for="emergency_contact[email]">Emergency Contact Email</label>
+                <input type="email" id="emergency_contact[email]" name="emergency_contact[email]">
+            </div>
+        </div>
+        <div class="row">
+            <button type="button" id="submitForm">Submit</button>
+        </div>
+    </form>
+
+<script>
+    console.log("Script is running");
+        document.addEventListener('DOMContentLoaded', function() {
+            const allergiesYes = document.getElementById('allergies_yes');
+    const allergiesNo = document.getElementById('allergies_no');
+    const allergiesSection = document.getElementById('allergiesSection');
+
+    // Function to toggle allergies section visibility
+    function toggleAllergiesSection() {
+        if (allergiesYes.checked) {
+            allergiesSection.style.display = '';
+        } else if (allergiesNo.checked) {
+            allergiesSection.style.display = 'none';
+        }
+    }
+
+    // Attach event listeners to the radio buttons
+    allergiesYes.addEventListener('change', toggleAllergiesSection);
+    allergiesNo.addEventListener('change', toggleAllergiesSection);
+
+    // Call the function on page load in case the selection is preset
+    toggleAllergiesSection();
+            // Combine all your DOMContentLoaded contents into one
+        
+            // Medications
+            const medicationsContainer = document.getElementById('medications');
+    
+            document.getElementById('addMedication').addEventListener('click', function() {
+                // Clone the first .medication-entry
+                const newEntry = medicationsContainer.firstElementChild.cloneNode(true);
+                // Clear the values of the inputs in the cloned entry
+                const inputs = newEntry.getElementsByTagName('input');
+                for (let input of inputs) {
+                    input.value = '';
+                }
+                // Append the new entry to the container
+                medicationsContainer.appendChild(newEntry);
+            });
+    
+            medicationsContainer.addEventListener('click', function(event) {
+                if (event.target.className === 'removeMedication') {
+                    // Remove the .medication-entry
+                    if (medicationsContainer.children.length > 1) {
+                        event.target.closest('.medication-entry').remove();
+                    } else {
+                        alert('You must have at least one medication entry.');
+                    }
+                }
+            });
+            // Allergies
+            const allergiesContainer = document.getElementById('allergies');
+            document.getElementById('addAllergy').addEventListener('click', function() {
+            const newEntry = allergiesContainer.firstElementChild.cloneNode(true);
+            newEntry.querySelectorAll('input').forEach(input => input.value = '');
+            allergiesContainer.appendChild(newEntry);
+            });
+    
+            allergiesContainer.addEventListener('click', function(event) {
+                if (event.target.className === 'removeAllergy' && allergiesContainer.children.length > 1) {
+                    event.target.closest('.allergy-entry').remove();
+                }
+            });
+        
+            // Symptoms
+            const symptomsContainer = document.getElementById('symptoms');
+            
+            document.getElementById('addSymptom').addEventListener('click', function() {
+                const newEntry = symptomsContainer.firstElementChild.cloneNode(true);
+                newEntry.querySelectorAll('input, select').forEach(input => {
+                    if(input.tagName === "SELECT") {
+                        input.selectedIndex = 0;
+                    } else {
+                        input.value = '';
+                    }
+                });
+                symptomsContainer.appendChild(newEntry);
+            });
+    
+            symptomsContainer.addEventListener('click', function(event) {
+                if (event.target.className === 'removeSymptom' && symptomsContainer.children.length > 1) {
+                    event.target.closest('.symptom-entry').remove();
+                }
+            });
+
+    
+    //create the json
+    function generatePatientJSON() {
+        const form = document.getElementById('patientForm');
+    
+        // Helper function to get the value of inputs by name
+        const getValueByName = (name) => {
+            const elements = form.querySelectorAll(`[name="${name}"]`);
+            // Check if the elements NodeList is not empty before accessing elements[0]
+            if (elements.length === 0) {
+                console.warn(`No elements found with the name "${name}".`);
+                return null; // Or an appropriate default value based on your requirements
+            }
+            if (elements.length > 1) {
+                return Array.from(elements).filter(el => el.checked || (el.type !== 'radio' && el.type !== 'checkbox')).map(el => el.value);
+            } else {
+                // Safely access elements[0] now that we've ensured the NodeList isn't empty
+                return elements[0].type === 'checkbox' ? elements[0].checked : elements[0].value;
+            }
+        };
+
+    
+        // Helper function to get the structured data from repeatable fields
+        const getStructuredData = (containerSelector, fields) => {
+        const containers = document.querySelectorAll(containerSelector);
+        if (containers.length === 0) {
+            console.error(`No containers found for selector "${containerSelector}".`);
+            return [];
+        }
+
+        return Array.from(containers).map(entry => {
+            const dataEntry = {};
+            fields.forEach(field => {
+                const input = entry.querySelector(`[name="${field}"]`);
+                if (!input) {
+                    console.warn(`Input named "${field}" not found in container.`, entry);
+                    dataEntry[field] = ''; // Set a default value or handle as needed
+                } else {
+                    dataEntry[field] = input.type === 'checkbox' ? input.checked : input.value;
+                }
+            });
+            return dataEntry;
+        });
+    };
+
+    
+        //generate a id from 0 t0 1000
+        function generateID() {
+            return Math.floor(Math.random() * 1000);
+        }
+        const patientData = {
+        ID: generateID(), 
+        name: getValueByName('name'),
+        age: parseInt(getValueByName('age'), 10),
+        recent_changes_in_health_yn: getValueByName('recent_changes_in_health_yn') === 'true',
+        pre_existing_conditions: getValueByName('pre-existing_conditions').split(','), // or '\n' if each condition is on a new line
+        medications: getStructuredData('.medication-entry', ['medications[name][]', 'medications[dosage][]', 'medications[reason_for_taking][]']).map(medication => ({
+            name: medication['medications[name][]'],
+            dosage: medication['medications[dosage][]'],
+            reason_for_taking: medication['medications[reason_for_taking][]']
+        })),
+        any_allergies_yn: getValueByName('any_allergies_yn') === 'true',
+        allergies: getStructuredData('.allergy-entry', ['allergies[substance][]', 'allergies[reaction][]']).map(allergy => ({
+            substance: allergy['allergies[substance][]'],
+            reaction: allergy['allergies[reaction][]']
+        })),
+        symptoms: getStructuredData('.symptom-entry', ['symptoms[symptom][]', 'symptoms[duration][]', 'symptoms[severity][]', 'symptoms[how_it_affects_daily_life][]']).map(symptom => ({
+            symptom: symptom['symptoms[symptom][]'],
+            duration: symptom['symptoms[duration][]'],
+            severity: symptom['symptoms[severity][]'],
+            how_it_affects_daily_life: symptom['symptoms[how_it_affects_daily_life][]']
+        })),
+        lifestyle_factors: {
+            diet: getValueByName('diet'),
+            exercise: getValueByName('exercise'),
+            stress_level: getValueByName('stress_level'),
+            sleep_quality: getValueByName('sleep_quality')
+        },
+        recent_travel_history: getValueByName('recent_travel_history'),
+        recent_exposure_to_sick_individuals: getValueByName('recent_exposure_to_sick_individuals') === 'true',
+        family_history_of_illnesses: getValueByName('family_history_of_illnesses'),
+        address: {
+            street: getValueByName('address[street]'),
+            city: getValueByName('address[city]'),
+            state: getValueByName('address[state]'),
+            zip: getValueByName('address[zip]')
+        },
+        contact: {
+            phone: getValueByName('contact[phone]'),
+            email: getValueByName('contact[email]')
+        },
+        emergency_contact: {
+            name: getValueByName('emergency_contact[name]'),
+            relationship: getValueByName('emergency_contact[relationship]'),
+            phone: getValueByName('emergency_contact[phone]'),
+            email: getValueByName('emergency_contact[email]')
+        }
+    };
+    
+    // Function to check if any field within a section has been filled
+    function isSectionFilled(fields) {
+        return fields.some(field => getValueByName(field));
+    }
+
+    // Optionally include address if any address field is filled
+    const addressFields = ['address[street]', 'address[city]', 'address[state]', 'address[zip]'];
+    if (isSectionFilled(addressFields)) {
+        patientData.address = {
+            street: getValueByName('address[street]'),
+            city: getValueByName('address[city]'),
+            state: getValueByName('address[state]'),
+            zip: getValueByName('address[zip]')
+        };
+    }
+
+    // Optionally include contact information if any field is filled
+    const contactFields = ['contact[phone]', 'contact[email]'];
+    if (isSectionFilled(contactFields)) {
+        patientData.contact = {
+            phone: getValueByName('contact[phone]'),
+            email: getValueByName('contact[email]')
+        };
+    }
+
+    // Optionally include emergency contact information if any field is filled
+    const emergencyContactFields = ['emergency_contact[name]', 'emergency_contact[relationship]', 'emergency_contact[phone]', 'emergency_contact[email]'];
+    if (isSectionFilled(emergencyContactFields)) {
+        patientData.emergency_contact = {
+            name: getValueByName('emergency_contact[name]'),
+            relationship: getValueByName('emergency_contact[relationship]'),
+            phone: getValueByName('emergency_contact[phone]'),
+            email: getValueByName('emergency_contact[email]')
+        };
+    }
+        // Log the JSON to see it in the console or return it from this function
+        console.log(patientData); //why doesnt this print
+        return patientData;
+    }
+    
+        
+    // helper function to serialize the form data and send to the server
+    async function createPatient(patientData) {
+            const url = 'http://localhost:8000/api/patient'; // Adjust the URL based on where your API is hosted
+    
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(patientData)
+                });
+    
+                if (response.ok) {
+                    const jsonResponse = await response.json();
+                    console.log('Patient created:', jsonResponse);
+                    return jsonResponse;
+                } else {
+                    console.error('Failed to create patient. Status:', response.status);
+                }
+            } catch (error) {
+                console.error('Error creating patient:', error);
+            }
+        }
+        
+        const submitButton = document.getElementById('submitForm');
+        if (submitButton) {
+            submitButton.addEventListener('click', function() {
+                const patientJSON = generatePatientJSON();
+                console.log(patientJSON);
+                // Assuming createPatient is a function that exists and handles the JSON data
+                createPatient(patientJSON);
+            });
+        } else {
+            console.error('Submit button with ID "submitForm" was not found.');
+        }
+    });
+
+        </script>
+        
+</body>
+</html>

@@ -84,7 +84,7 @@ components:
           type: integer
         recent_changes_in_health_yn:
           type: boolean
-        pre-existing_conditions:
+        pre_existing_conditions:
           type: array
           items:
             type: string
@@ -107,7 +107,7 @@ components:
         recent_travel_history:
           type: string
         recent_exposure_to_sick_individuals:
-          type: string
+          type: boolean
         family_history_of_illnesses:
           type: string
         address:
@@ -125,7 +125,7 @@ components:
         - name
         - age
         - recent_changes_in_health_yn
-        - pre-existing_conditions
+        - pre_existing_conditions
         - medications
         - any_allergies_yn
         - allergies

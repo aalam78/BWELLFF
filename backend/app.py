@@ -60,9 +60,5 @@ def home(path):
     # type path and sending path to func
     return send_from_directory('../frontend/', path)
 
-    # A template is a file that serves as a blueprint for rendering information.
-    # return render_template('home.html')  # render a template
-
-
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000, log_level="debug")
+    app.run(host='localhost', port=8000, log_level="debug")

@@ -3,27 +3,164 @@
 <head>
   <meta name = "viewport" content="width = device-width, initial-scale = 1.0">
   <link rel = "stylesheet" type = "text/css" href="telehealth.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <title>TeleHealth</title>
 </head>
 <body>
-   <div id="welcomeMessage"></div>
-   <button class="custom-btn btn-6" onclick="fetchPerson()"><span>Book an appointment</span></button>
-   <img src="./images/doc5.png" alt="BFF" style="width:auto;height:500px;">
-   
 
+  <nav>
+    <div class="logo">
+        <img id="logo" src="./images/BFF.png" style="width:auto;height:50px;">
+    </div>
+    <ul class="nav-links">
+        <li>
+            <a href="home.html">Chat</a>
+        </li>
+        <li>
+            <a href="telehealth.html">Make an appointment</a>
+        </li>
+        <li>
+            <a href="call.html">Contact 911</a>
+        </li>
+    </ul>
+  </nav>
+          <div id="welcomeMessage"><p></p>
+            <p id="namePlaceholder"></p>
+
+          </div>
+          
+            
+          <button class="custom-btn btn-6" onclick="openPopup()"><span>Check availability</span></button>
     
-   <input type="date" id="datePicker">
+          <!-- Popup window -->
+<div id="popup" class="popup">
+  <div class="popup-container">
+    <h2>Select Date, Time, and Doctor</h2>
+    <input type="datetime-local" id="appointmentDateTime">
+    <select id="doctorSelect">
+      <option value="Dr. Smith">Dr. Smith</option>
+      <option value="Dr. Johnson">Dr. Johnson</option>
+      <option value="Dr. Lee">Dr. Lee</option>
+    </select>
+    <button onclick="openConfirmationPopup()">Create</button>
+  </div>
+</div>
 
-   <!-- Add an input field for entering the person's name -->
-   <input type="text" id="personName2" placeholder="This is a test. Enter person's name">
-   <!-- Add a button to trigger the fetch operation -->
-   <button onclick="postData()">Post Person</button>
-  
+<!-- Second popup window to confirm selected date and time -->
+<div id="confirmationPopup" class="popup">
+  <div class="popup-container">
+    <h2>Appointment Confirmed</h2>
+    <p>Your appointment is scheduled for:</p>
+    <p id="selectedDateTime"></p>
+    <p>With Doctor: <span id="selectedDoctor"></span></p>
+    <button onclick="closeConfirmationPopup()">Close</button>
+  </div>
+</div>
+<div id="container">
+   <!-- input field for entering the person's name -->
+   <!-- <input type="text" id="personName2" placeholder="This is a test. Enter person's name"> -->
+   <!-- button to trigger the fetch operation -->
+   <!-- <button onclick="fetchPerson()">Post Person</button> -->
+</div>
+
+      <div id="bigContainer">
+
+      <img id="mainImage" src="./images/doc5.png" alt="BFF" style="width:18em;height:auto;">
+
+      </div>
+     
+      <div class='footnote'>Resources used: Illustrations from icon8.com</div>
   <script>
+    // Function to generate a random name
+function getRandomName() {
+  const names = ['Alice', 'Bob', 'Charlie', 'Diana', 'Evan'];
+  const randomIndex = Math.floor(Math.random() * names.length);
+  return names[randomIndex];
+}
+// Get a random name
+const randomName = getRandomName();
+
+// Accessing the HTML element where the name will be displayed
+const randomNameDisplay = document.getElementById("namePlaceholder");
+
+// Adding text combined with the random name to the HTML element
+randomNameDisplay.textContent = "Welcome " + randomName + ", to Telehealth!";
+// Function to update the welcome message with the fetched name
+function updateWelcomeMessage(name) {
+  var welcomeDiv = document.getElementById("welcomeMessage");
+  var nameParagraph = welcomeDiv.querySelector("#namePlaceholder");
+  nameParagraph.textContent = name;
+
+  var welcomeParagraph = welcomeDiv.querySelector("p:first-of-type");
+  welcomeParagraph.textContent = "Welcome " + name + " to Telehealth!";
+}
+
+    function openPopup() {
+  // Show the popup window
+  document.getElementById("popup").style.display = "block";
+}
+
+     function openConfirmationPopup() {
+  // Get the selected date and time
+  const dateTimeInput = document.getElementById("appointmentDateTime");
+  const selectedDateTime = dateTimeInput.value;
+  
+    // Get the selected doctor
+  const doctorSelect = document.getElementById("doctorSelect");
+  const selectedDoctor = doctorSelect.options[doctorSelect.selectedIndex].text;
+
+  // Check if a date and time is selected
+  if (!selectedDateTime) {
+    alert("Please select a date and time for the appointment.");
+    return;
+  }
+  // Display the selected doctor in the second popup window
+  document.getElementById("selectedDoctor").innerText = selectedDoctor;
+  // Display the selected date and time in the second popup window
+  document.getElementById("selectedDateTime").innerText = selectedDateTime;
+
+  // Show the second popup window
+  document.getElementById("confirmationPopup").style.display = "block";
+}
+function closeConfirmationPopup() {
+  // Close the second popup window
+  document.getElementById("confirmationPopup").style.display = "none";
+  // Close the first popup window
+  document.getElementById("popup").style.display = "none";
+}
+
+    // Array of image paths
+    var imagePaths = [
+        "./images/doc2.png",
+        "./images/doc3.png",
+        "./images/doc4.png",
+        "./images/doc5.png"
+    ];
+
+    var currentIndex = 0;
+
+    function switchImageAutomatically() {
+        
+        var mainImage = document.getElementById("mainImage");
+
+        currentIndex++;
+
+        // If the index is out of bounds, reset it
+        if (currentIndex >= imagePaths.length) {
+            currentIndex = 0;
+        }
+
+        // Src attribute of the main image to the next image path
+        mainImage.src = imagePaths[currentIndex];
+    }
+
+    // SwitchImageAutomatically function every 5 seconds (5000 milliseconds)
+    setInterval(switchImageAutomatically, 5000);
+
       function fetchPerson() {
-        const name = "Jane Doe";
+        const name = personName2.value.trim();
         // const name = document.getElementById('personName').value.trim();
-        const url = `http://localhost:8000/api/people/${encodeURIComponent(name)}`;
+        const url = `http://localhost:8000/api/patient/${encodeURIComponent(name)}`;
         if (name === '') {
             alert('Please enter a name.');
             return;
@@ -38,9 +175,8 @@
                 return response.json();
             })
             .then(person => {
-                // Display the personalized welcome message and the fetched person's information
                 const welcomeMessage = document.createElement('div');
-                welcomeMessage.textContent = `Welcome, ${(name)} to Telehealth!`;
+                welcomeMessage.textContent = `Welcome ${(name)} to Telehealth!`;
                 document.getElementById('welcomeMessage').appendChild(welcomeMessage);
 
             })
@@ -49,11 +185,9 @@
                 document.getElementById('welcomeMessage').innerHTML = 'Person not found';
             });
     }
-    
 
-    const datePicker = document.getElementById('datePicker');
 
-// Example: Log the selected date to the console when changed
+// Log the selected date to the console when changed
 datePicker.addEventListener('change', function() {
     console.log('Selected date:', datePicker.value);
     fetch('/post_date', {
@@ -69,6 +203,20 @@ datePicker.addEventListener('change', function() {
 });
 
 
+
+// Example of using the function
+// console.log(getRandomName());
+// Get the content of the <p> element within the <div> with id "welcomeMessage"
+  var welcomeDiv = document.getElementById("welcomeMessage");
+var nameParagraph = welcomeDiv.querySelector("#namePlaceholder");
+
+
+
+// Update the content of the <p> element with the extracted name
+nameParagraph.textContent = name;
+// Update the welcome message to include the generated name
+var welcomeParagraph = welcomeDiv.querySelector("p:first-of-type");
+welcomeParagraph.textContent = "Welcome " + name + " to Telehealth!";
 function postData() {
     const url = `http://localhost:8000/api/people/`;
     const data = {
@@ -96,8 +244,7 @@ function postData() {
     .catch(error => {
         console.error('Error:', error);
     });
-}
-
+}    
 </script> 
  
 </body>

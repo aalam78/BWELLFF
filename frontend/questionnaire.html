@@ -203,74 +203,56 @@
    <button type="button" onclick="testPerson()">Test Person</button>
 
    <script>
-    //   function fetchPerson() {
-    //      console.log('Fetching person');
-    //      const actualName = document.getElementById('personName').value.trim();
-    //      const age = document.getElementById('age').value;
-    //      const url = 'http://localhost:8000/api/people';
-    //      const data ={name: actualName, age: age};
+    async function createPatient(patientData) {
+    const url = 'http://localhost:8000/api/patient'; // Adjust the URL based on where your API is hosted
 
-    //      console.log(data);
+    try {
+        // Send a POST request to the specified URL with the patient data in the request body
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(patientData)
+        });
 
-    //      if (actualName === '') {
-    //         document.getElementById('welcomeMessage').innerHTML = 'Please enter your name';
-    //         return;
-    //      }
+        // If the response is successful (status code 200-299), parse the JSON response
+        if (response.ok) {
+            const jsonResponse = await response.json();
+            console.log('Patient created:', jsonResponse);
+            return jsonResponse; // Return the parsed JSON response
+        } else {
+            // If the response is not successful, log an error message
+            console.error('Failed to create patient. Status:', response.status);
+        }
+    } catch (error) {
+        // If an error occurs during the request, log the error
+        console.error('Error creating patient:', error);
+    }
+}
 
-    //      fetch(url, {
-    //            method: 'POST',
-    //            headers: {
-    //               'Content-Type': 'application/json'
-    //            },
-    //            body: JSON.stringify(data)
-    //      })
-    //      .then(response => {
-    //            if (!response.ok) {
-    //               throw new Error('Failed to add person');
-    //            }
-    //            return response.json();
-    //      })
-    //      .then(person => {
-    //            // Handle successful response (if needed)
-    //            console.log('Added person:', person);
-    //      })
-    //      .catch(error => {
-    //            console.error('Error:', error);
-    //      });
-    //   }
+// Example patient data
+const patientData = {'ID': 0, 
+    'name': 'Gramma', 
+    'age': 80, 
+    'recent_changes_in_health_yn': true, 
+    'pre-existing_conditions': ['string'], 
+    'medications': true, 
+    'any_allergies_yn': true, 
+}
 
-      function testPerson() {
-         console.log('Testing person');
-         const name = document.getElementById('personName').value.trim();
-         const url = 'http://localhost:8000/api/people'; // Assuming this is your POST endpoint
-         const data = { name: name }; // Assuming you want to send the person's name in the request body
+// Call the function with the sample patient data
+createPatient(patientData)
+    .then(storedPatientData => {
+        // This block executes if the patient creation is successful
+        console.log('Stored patient data:', storedPatientData);
+        // You can display it on the UI, manipulate it further, or perform other actions
+    })
+    .catch(error => {
+        // This block executes if there's an error during the patient creation process
+        console.error('Error creating patient:', error);
+    });
 
-         if (name === '') {
-               alert('Please enter a name.');
-               return;
-         }
-
-         fetch(url, {
-               method: 'POST',
-               headers: {
-                  'Content-Type': 'application/json'
-               },
-               body: JSON.stringify(data)
-         })
-         .then(response => {
-               if (!response.ok) {
-                  throw new Error('Failed to add person');
-               }
-               return response.json();
-         })
-         .then(person => {
-               // Handle successful response (if needed)
-               console.log('Added person:', person);
-         })
-         .catch(error => {
-               console.error('Error:', error);
-         });
-      }
    </script>
 </body>
 </html>

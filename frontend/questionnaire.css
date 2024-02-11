@@ -23,7 +23,7 @@
     text-align: center;
     background-color: #C1DFF0;
     font-family: "Cormorant Garamond", serif;
-    font-size: .8em;
+    font-size: .9em;
     color: #172A3A;
   }
 
@@ -84,7 +84,7 @@
     background-color: tomato;
   } */
   .custom-btn {
-    width: 130px;
+    width: 110px;
     height: 40px;
     color: #fff;
     border-radius: 5px;
@@ -103,12 +103,12 @@
   }
 /* 6 */
 .btn-6 {
-    background: rgb(247,150,192);
-  background: radial-gradient(circle, rgba(247,150,192,1) 0%, rgba(118,174,241,1) 100%);
-    line-height: 42px;
-    padding: 0;
-    border: none;
-  }
+  background: rgb(10, 75, 180);
+background: radial-gradient(circle, rgb(15, 118, 134) 0%, rgb(1, 12, 110) 100%);
+  line-height: 3em;
+  padding: 0;
+  border: none;
+}
   .btn-6 span {
     position: relative;
     display: block;

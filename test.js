@@ -24,7 +24,7 @@ async function createPatient(patientData) {
 
 // Example patient data
 const patientData = {'ID': 0, 
-    'name': 'Erika', 
+    'name': 'Arnib', 
     'age': 0, 
     'recent_changes_in_health_yn': true, 
     'pre-existing_conditions': ['string'], 

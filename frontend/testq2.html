@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Questionnaire</title>
+   <link rel="stylesheet" href="questionnaire.css">
+</head>
+<body>
+   <h1>Pre-Health Screening Questionnaire</h1>
+   <form id="questionnaireForm">
+      <!-- Name -->
+      <div>
+         <label for="personName">Name:</label>
+         <input type="text" id="personName" name="personName" required>
+      </div>
+
+      <!-- Age -->
+      <div>
+         <label for="age">Age:</label>
+         <input type="number" id="age" name="age" required>
+      </div>
+
+      <!-- Is this diagnosis for you? -->
+      <div>
+         <p>Is this diagnosis for you?</p>
+         <label for="diagnosisForSelfYes">
+            <input type="radio" id="diagnosisForSelfYes" name="diagnosisForSelf" value="Yes" required>
+            Yes
+         </label>
+         <label for="diagnosisForSelfNo">
+            <input type="radio" id="diagnosisForSelfNo" name="diagnosisForSelf" value="No" required>
+            No
+         </label>
+      </div>
+
+      <!-- Who are you diagnosing for? -->
+      <div id="diagnosisForList" style="display: none;">
+         <label for="diagnosisFor">Who are you diagnosing for?</label>
+         <select id="diagnosisFor" name="diagnosisFor">
+            <option value="For child">For kid</option>
+            <option value="For spouse">For spouse</option>
+            <option value="For parent">For parent</option>
+            <option value="For relative">For relative</option>
+            <option value="Other">Other</option>
+         </select>
+      </div>
+
+      <!-- Have you experienced any recent changes in your health? -->
+      <div>
+         <p>Have you experienced any recent changes in your health?</p>
+         <label for="recentHealthChangesYes">
+            <input type="radio" id="recentHealthChangesYes" name="recentHealthChanges" value="Yes" required>
+            Yes
+         </label>
+         <label for="recentHealthChangesNo">
+            <input type="radio" id="recentHealthChangesNo" name="recentHealthChanges" value="No" required>
+            No
+         </label>
+      </div>
+
+      <!-- Do you have any pre-existing medical conditions? -->
+      <div>
+         <p>Do you have any pre-existing medical conditions?</p>
+         <label for="preExistingConditionsYes">
+            <input type="radio" id="preExistingConditionsYes" name="preExistingConditions" value="Yes" required>
+            Yes
+         </label>
+         <label for="preExistingConditionsNo">
+            <input type="radio" id="preExistingConditionsNo" name="preExistingConditions" value="No" required>
+            No
+         </label>
+      </div>
+
+      <!-- Select current pre-existing medical conditions -->
+      <div id="medicalConditions" style="display: none;">
+         <p>Select your current pre-existing medical conditions:</p>
+         <label for="hypertension">
+            <input type="checkbox" id="hypertension" name="medicalConditions[]" value="Hypertension">
+            Hypertension
+         </label><br>
+         <label for="diabetes">
+            <input type="checkbox" id="diabetes" name="medicalConditions[]" value="Diabetes">
+            Diabetes
+         </label><br>
+         <!-- Add more checkboxes for each medical condition -->
+      </div>
+
+      <!-- Are you currently taking any medications? -->
+      <div>
+         <p>Are you currently taking any medications?</p>
+         <label for="takingMedicationsYes">
+            <input type="radio" id="takingMedicationsYes" name="takingMedications" value="Yes" required>
+            Yes
+         </label>
+         <label for="takingMedicationsNo">
+            <input type="radio" id="takingMedicationsNo" name="takingMedications" value="No" required>
+            No
+         </label>
+      </div>
+
+      <!-- Do you have any known allergies? -->
+      <div>
+         <p>Do you have any known allergies?</p>
+         <label for="knownAllergiesYes">
+            <input type="radio" id="knownAllergiesYes" name="knownAllergies" value="Yes" required>
+            Yes
+         </label>
+         <label for="knownAllergiesNo">
+            <input type="radio" id="knownAllergiesNo" name="knownAllergies" value="No" required>
+            No
+         </label>
+      </div>
+
+      <div>
+         <button type="submit">Submit</button>
+      </div>
+   </form>
+
+   <script>
+      // Function to toggle the visibility of the "Who are you diagnosing for?" section
+      function toggleDiagnosisFor() {
+         var noRadio = document.getElementById('diagnosisForSelfNo');
+         var diagnosisForList = document.getElementById('diagnosisForList');
+         diagnosisForList.style.display = noRadio.checked ? 'block' : 'none';
+      }
+
+      // Function to toggle the visibility of the medical conditions section
+      function toggleMedicalConditions() {
+         var yesRadio = document.getElementById('preExistingConditionsYes');
+         var medicalConditions = document.getElementById('medicalConditions');
+         medicalConditions.style.display = yesRadio.checked ? 'block' : 'none';
+      }
+
+      // Event listener for form submission
+      document.getElementById('questionnaireForm').addEventListener('submit', function(event) {
+         event.preventDefault(); // Prevent the default form submission
+         // Collect the form data
+         var formData = new FormData(this);
+         var patientData = {};
+         // Convert form data to JSON
+         for (var [key, value] of formData.entries()) {
+            if (key.endsWith('[]')) {
+               // If the key ends with '[]', treat it as an array
+               key = key.slice(0, -2); // Remove the '[]' suffix
+               if (!patientData[key]) {
+                  // If the key doesn't exist in patientData, create it as an array
+                  patientData[key] = [];
+               }
+               patientData[key].push(value); // Add the value to the array
+            } else {
+               patientData[key] = value; // Otherwise, treat it as a single value
+            }
+         }
+         // Print the collected patient data to the console
+         console.log('Patient data:', patientData);
+         // Call the createPatient function with the collected patient data
+         createPatient(patientData);
+      });
+
+      async function createPatient(patientData) {
+         const url = 'http://localhost:8000/api/patient'; // Adjust the URL based on where your API is hosted
+         try {
+            const response = await fetch(url, {
+               method: 'POST',
+               headers: {
+                  'Content-Type': 'application/json',
+               },
+               body: JSON.stringify(patientData)
+            });
+            if (response.ok) {
+               const jsonResponse = await response.json();
+               console.log('Patient created:', jsonResponse);
+               // Optionally, display a success message to the user
+            } else {
+               console.error('Failed to create patient. Status:', response.status);
+               // Optionally, display an error message to the user
+            }
+         } catch (error) {
+            console.error('Error creating patient:', error);
+            // Optionally, display an error message to the user
+         }
+      }
+   </script>
+</body>
+</html>

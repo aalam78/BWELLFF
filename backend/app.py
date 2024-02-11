@@ -1,4 +1,4 @@
-from flask import  render_template
+from flask import  render_template, Flask
 from flask_restful import Resource, Api
 
 from json import JSONEncoder
@@ -11,6 +11,12 @@ from flask_cors import CORS, cross_origin
 app =connexion.App(__name__, specification_dir='./') 
 
 CORS(app.app) # enable CORS
+# @app.after_request
+# def after_request(response):
+#     response.headers.add('Access-Control-Allow-Origin', '*')
+#     response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+#     response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+#     return response
 app.add_api('swagger.yml') # Read the swagger.yml file to configure the endpoints
 
 @app.route('/') # decorator to tell Flask what URL should trigger the function
